@@ -1,0 +1,38 @@
+MEMORY ARCHITECTURE REPORT
+===========================
+
+Selected Architecture
+---------------------
+monolithic
+
+User Inputs
+-----------
+memory_size: 1024
+data_width: 8
+num_ports: 2
+read_ports: 1
+write_ports: 1
+num_banks: 1
+clock_frequency: 500
+priority: latency
+access_pattern: random
+N: 2
+
+Derived Parameters
+------------------
+DATA_WIDTH: 8
+MEMORY_SIZE: 1024
+MEMORY_DEPTH: 128
+ADDR_WIDTH: 7
+NUM_PORTS: 2
+NUM_READ_PORTS: 1
+NUM_WRITE_PORTS: 1
+N: 2
+NUM_BANKS: 1
+BANK_INDEX_WIDTH: 0
+BANK_ADDR_WIDTH: 7
+PIPELINE_DEPTH: 1
+CLOCK_FREQUENCY: 500
+ACCESS_PATTERN: random
+PRIORITY: latency
+ARCHITECTURE: monolithic

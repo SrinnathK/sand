@@ -1,0 +1,210 @@
+m255
+K4
+z2
+!s11f MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dF:/Sandisk/sand/generator/results/Multiport_Arch/tb
+vaddress_map_block
+Z1 2../rtl/address_map_block.v|../rtl/arbiter_round_robin.v|../rtl/bank_selector.v|../rtl/memory_bank.v|../rtl/multiport_controller.v|../rtl/multiport_memory_top.v|../rtl/read_mux.v
+Z2 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z3 !s110 1772797654
+!i10b 1
+!s100 CzlSJ1FeB3VBQdSnGZ>HZ1
+I;mDhU@8<SbN3mVQdmgJPU0
+S1
+R0
+Z4 w1772797617
+8../rtl/address_map_block.v
+F../rtl/address_map_block.v
+!i122 5
+L0 1 15
+Z5 VDg1SIo80bB@j0V0VzS_@n1
+Z6 OL;L;2024.1;79
+r1
+!s85 0
+31
+Z7 !s108 1772797654.000000
+Z8 !s107 ../rtl/read_mux.v|../rtl/multiport_memory_top.v|../rtl/multiport_controller.v|../rtl/memory_bank.v|../rtl/bank_selector.v|../rtl/arbiter_round_robin.v|../rtl/address_map_block.v|
+Z9 !s90 -sv|../rtl/address_map_block.v|../rtl/arbiter_round_robin.v|../rtl/bank_selector.v|../rtl/memory_bank.v|../rtl/multiport_controller.v|../rtl/multiport_memory_top.v|../rtl/read_mux.v|
+!i113 0
+Z10 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z11 tCvgOpt 0
+varbiter_round_robin
+R1
+R2
+R3
+!i10b 1
+!s100 G`ZN?hAeH^fk`XP3VQ1`60
+IoVJg]I_ZEIO^iZ?UA8oon1
+S1
+R0
+R4
+8../rtl/arbiter_round_robin.v
+F../rtl/arbiter_round_robin.v
+!i122 5
+L0 1 43
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R11
+vbank_selector
+R1
+R2
+R3
+!i10b 1
+!s100 W`?1Ca^<]4_A0jUJj3`AW2
+IF`V7B:W3M9[NFiOo6Pj690
+S1
+R0
+R4
+8../rtl/bank_selector.v
+F../rtl/bank_selector.v
+!i122 5
+Z12 L0 1 25
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R11
+vmemory_bank
+R1
+R2
+R3
+!i10b 1
+!s100 <6RbL5c`PU^[l=SZR>68O1
+IPBbAC03O8T6Q:iTEBChS82
+S1
+R0
+R4
+8../rtl/memory_bank.v
+F../rtl/memory_bank.v
+!i122 5
+L0 1 26
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R11
+vMultiport_Arch_memory_tb
+2Multiport_Arch_memory_tb.v
+!s110 1772797665
+!i10b 1
+!s100 ml_z@:IeHJdDi]`1TD52X1
+IQoWB4kGSYNXOLj=eDNOjL2
+R0
+R4
+8Multiport_Arch_memory_tb.v
+FMultiport_Arch_memory_tb.v
+!i122 6
+L0 3 86
+R5
+R6
+r1
+!s85 0
+31
+!s108 1772797665.000000
+!s107 Multiport_Arch_memory_tb.v|
+!s90 Multiport_Arch_memory_tb.v|
+!i113 0
+o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R11
+n@multiport_@arch_memory_tb
+vmultiport_controller
+R1
+R2
+R3
+!i10b 1
+!s100 e[UW;E9NnjH>SRZ3[DR8R3
+Ii72akEJ`3bzDcjbgWDDBF3
+S1
+R0
+R4
+8../rtl/multiport_controller.v
+F../rtl/multiport_controller.v
+!i122 5
+L0 1 176
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R11
+vmultiport_memory_top
+R1
+R2
+R3
+!i10b 1
+!s100 CGn4BGz<@N0bPV<aMm`W92
+IQCa2cdY2`aaAcjYYJ8SjU2
+S1
+R0
+R4
+8../rtl/multiport_memory_top.v
+F../rtl/multiport_memory_top.v
+!i122 5
+L0 1 86
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R11
+vread_mux
+R1
+R2
+R3
+!i10b 1
+!s100 UAoEdUDMiz__2PB0CX9WZ1
+IXE]akEZlm8fegN;YYc9ek1
+S1
+R0
+R4
+8../rtl/read_mux.v
+F../rtl/read_mux.v
+!i122 5
+R12
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R11

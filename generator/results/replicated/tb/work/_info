@@ -1,0 +1,103 @@
+m255
+K4
+z2
+!s11f vlog 2024.1 2024.02, Feb  1 2024
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dF:/Sandisk/sand/generator/results/replicated/tb
+vreplicated_forwarding_unit
+Z1 2../rtl/replicated_forwarding_unit.v|../rtl/replicated_memory_read_port.v|../rtl/replicated_memory_top.v
+Z2 !s110 1772795076
+!i10b 1
+!s100 V1H4bHJZJ8A1A_GGM;o`X2
+I9_B]e?26i@TO<Oiz^zeCB1
+R0
+Z3 w1772790830
+8../rtl/replicated_forwarding_unit.v
+F../rtl/replicated_forwarding_unit.v
+!i122 0
+L0 1 25
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 OL;L;2024.1;79
+r1
+!s85 0
+31
+Z6 !s108 1772795076.000000
+Z7 !s107 ../rtl/replicated_memory_top.v|../rtl/replicated_memory_read_port.v|../rtl/replicated_forwarding_unit.v|
+Z8 !s90 ../rtl/replicated_forwarding_unit.v|../rtl/replicated_memory_read_port.v|../rtl/replicated_memory_top.v|
+!i113 0
+Z9 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z10 tCvgOpt 0
+vreplicated_memory_read_port
+R1
+R2
+!i10b 1
+!s100 nOAQ=;X<ClN1VlI?[<ik02
+IfX3gm6PmMkZCfQSYJL@J00
+R0
+R3
+8../rtl/replicated_memory_read_port.v
+F../rtl/replicated_memory_read_port.v
+!i122 0
+L0 1 19
+R4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R10
+vreplicated_memory_tb
+2replicated_memory_tb.v
+!s110 1772795084
+!i10b 1
+!s100 X:>c4BjAfY<DkN0Wgm_kF2
+IGh4O]Va]ll]8alUHQ2@b32
+R0
+R3
+8replicated_memory_tb.v
+Freplicated_memory_tb.v
+!i122 1
+L0 3 86
+R4
+R5
+r1
+!s85 0
+31
+!s108 1772795084.000000
+!s107 replicated_memory_tb.v|
+!s90 replicated_memory_tb.v|
+!i113 0
+R9
+R10
+vreplicated_memory_top
+R1
+R2
+!i10b 1
+!s100 IgRQ2Q]mg?j8_Q4VWPTCm0
+IzDJ0fBd>9Tb^?FRJF^;CL2
+R0
+R3
+8../rtl/replicated_memory_top.v
+F../rtl/replicated_memory_top.v
+!i122 0
+L0 1 86
+R4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R10

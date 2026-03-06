@@ -1,0 +1,38 @@
+MEMORY ARCHITECTURE REPORT
+===========================
+
+Selected Architecture
+---------------------
+banked
+
+User Inputs
+-----------
+memory_size: 1024
+data_width: 8
+num_ports: 3
+read_ports: 2
+write_ports: 1
+num_banks: 4
+clock_frequency: 500
+priority: bandwidth
+access_pattern: random
+N: 3
+
+Derived Parameters
+------------------
+DATA_WIDTH: 8
+MEMORY_SIZE: 1024
+MEMORY_DEPTH: 128
+ADDR_WIDTH: 7
+NUM_PORTS: 3
+NUM_READ_PORTS: 2
+NUM_WRITE_PORTS: 1
+N: 3
+NUM_BANKS: 4
+BANK_INDEX_WIDTH: 2
+BANK_ADDR_WIDTH: 5
+PIPELINE_DEPTH: 1
+CLOCK_FREQUENCY: 500
+ACCESS_PATTERN: random
+PRIORITY: bandwidth
+ARCHITECTURE: banked

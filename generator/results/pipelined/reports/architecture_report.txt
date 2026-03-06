@@ -1,0 +1,38 @@
+MEMORY ARCHITECTURE REPORT
+===========================
+
+Selected Architecture
+---------------------
+pipelined
+
+User Inputs
+-----------
+memory_size: 1024
+data_width: 8
+num_ports: 4
+read_ports: 2
+write_ports: 2
+num_banks: 4
+clock_frequency: 1000
+priority: latency
+access_pattern: random
+N: 4
+
+Derived Parameters
+------------------
+DATA_WIDTH: 8
+MEMORY_SIZE: 1024
+MEMORY_DEPTH: 128
+ADDR_WIDTH: 7
+NUM_PORTS: 4
+NUM_READ_PORTS: 2
+NUM_WRITE_PORTS: 2
+N: 4
+NUM_BANKS: 4
+BANK_INDEX_WIDTH: 2
+BANK_ADDR_WIDTH: 5
+PIPELINE_DEPTH: 3
+CLOCK_FREQUENCY: 1000
+ACCESS_PATTERN: random
+PRIORITY: latency
+ARCHITECTURE: pipelined
