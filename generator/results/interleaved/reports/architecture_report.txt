@@ -9,14 +9,14 @@ User Inputs
 -----------
 memory_size: 1024
 data_width: 8
-num_ports: 3
-read_ports: 2
+num_ports: 2
+read_ports: 1
 write_ports: 1
 num_banks: 4
-clock_frequency: 500
-priority: latency
+clock_frequency: 400
+priority: bandwidth
 access_pattern: sequential
-N: 3
+N: 2
 
 Derived Parameters
 ------------------
@@ -24,15 +24,21 @@ DATA_WIDTH: 8
 MEMORY_SIZE: 1024
 MEMORY_DEPTH: 128
 ADDR_WIDTH: 7
-NUM_PORTS: 3
-NUM_READ_PORTS: 2
+NUM_PORTS: 2
+NUM_READ_PORTS: 1
 NUM_WRITE_PORTS: 1
-N: 3
+READ_PORTS: 1
+WRITE_PORTS: 1
+N: 2
 NUM_BANKS: 4
+MAX_BANKS: 4
 BANK_INDEX_WIDTH: 2
 BANK_ADDR_WIDTH: 5
 PIPELINE_DEPTH: 1
-CLOCK_FREQUENCY: 500
-ACCESS_PATTERN: sequential
-PRIORITY: latency
+CLOCK_FREQUENCY: 400
+ACCESS_PATTERN: 1
+PRIORITY: 1
+NUM_REPLICAS: 1
+ARBITER_TYPE: 0
+ADDR_MAP_TYPE: 0
 ARCHITECTURE: interleaved

@@ -4,13 +4,15 @@ module pipelined_memory_tb;
 
 parameter DATA_WIDTH = 8;
 parameter ADDR_WIDTH = 7;
-parameter NUM_READ_PORTS = 2;
-parameter NUM_WRITE_PORTS = 2;
+parameter NUM_READ_PORTS = 1;
+parameter NUM_WRITE_PORTS = 1;
+
+parameter CLK_PERIOD = 10;
 
 reg clk;
-reg rst;
 
 reg [NUM_WRITE_PORTS-1:0] write_en;
+
 reg [ADDR_WIDTH-1:0] write_addr [0:NUM_WRITE_PORTS-1];
 reg [DATA_WIDTH-1:0] write_data [0:NUM_WRITE_PORTS-1];
 
@@ -19,52 +21,120 @@ wire [DATA_WIDTH-1:0] read_data [0:NUM_READ_PORTS-1];
 
 integer i;
 
+
+// counters
+integer write_count;
+integer read_count;
+integer op_count;
+
+
+// latency tracking
+integer latency_start [0:NUM_READ_PORTS-1];
+integer latency_end   [0:NUM_READ_PORTS-1];
+integer latency_total;
+integer latency_measurements;
+
+real avg_latency;
+real throughput;
+
+integer start_time;
+integer end_time;
+
+integer report_file;
+
+
+// DUT
 pipelined_memory_top dut (
-    .clk(clk),
-    .rst(rst)
+    .clk(clk)
 );
 
-always #5 clk = ~clk;
+
+// clock generation
+always #(CLK_PERIOD/2) clk = ~clk;
+
+
+// waveform dump
+initial begin
+    $dumpfile("pipelined_waveform.vcd");
+    $dumpvars(0, pipelined_memory_tb);
+end
+
+
+
+// performance monitoring
+always @(posedge clk) begin
+
+    for(i=0;i<NUM_WRITE_PORTS;i=i+1) begin
+        if(write_en[i]) begin
+            write_count = write_count + 1;
+            op_count = op_count + 1;
+        end
+    end
+
+    for(i=0;i<NUM_READ_PORTS;i=i+1) begin
+
+        if(read_addr[i] !== 0)
+            latency_start[i] = $time;
+
+        if(read_data[i] !== 'bx) begin
+            latency_end[i] = $time;
+            latency_total = latency_total + (latency_end[i] - latency_start[i]);
+            latency_measurements = latency_measurements + 1;
+
+            read_count = read_count + 1;
+            op_count = op_count + 1;
+        end
+
+    end
+
+end
+
+
 
 initial begin
 
     clk = 0;
-    rst = 1;
 
-    #20 rst = 0;
+    write_count = 0;
+    read_count = 0;
+    op_count = 0;
 
-    // ---------------------------
+    latency_total = 0;
+    latency_measurements = 0;
+
+
+    // open report file
+    report_file = $fopen("../reports/performance_report.txt","w");
+
+
+    start_time = $time;
+
+
+
     // WRITE TEST
-    // ---------------------------
-
     for(i=0;i<NUM_WRITE_PORTS;i=i+1) begin
         write_en[i] = 1;
         write_addr[i] = i;
         write_data[i] = i + 100;
     end
 
-    #10;
+    #CLK_PERIOD;
 
     for(i=0;i<NUM_WRITE_PORTS;i=i+1)
         write_en[i] = 0;
 
-    // ---------------------------
-    // READ TEST
-    // ---------------------------
 
+
+    // READ TEST
     for(i=0;i<NUM_READ_PORTS;i=i+1)
         read_addr[i] = i;
 
     #20;
 
-    for(i=0;i<NUM_READ_PORTS;i=i+1)
-        $display("READ[%0d] = %0d", i, read_data[i]);
 
-    // ---------------------------
+
     // RANDOM ACCESS TEST
-    // ---------------------------
-
-    repeat(20) begin
+    repeat(50) begin
 
         for(i=0;i<NUM_WRITE_PORTS;i=i+1) begin
             write_en[i] = $random;
@@ -75,14 +145,52 @@ initial begin
         for(i=0;i<NUM_READ_PORTS;i=i+1)
             read_addr[i] = $random;
 
-        #10;
+        #CLK_PERIOD;
 
     end
 
-    $display("Simulation Finished");
+
+
+    end_time = $time;
+
+
+
+    // metric calculations
+    if(latency_measurements > 0)
+        avg_latency = latency_total * 1.0 / latency_measurements;
+
+    throughput = op_count * 1.0 / ((end_time - start_time)/CLK_PERIOD);
+
+
+
+    // write report
+    $fdisplay(report_file,"====================================");
+    $fdisplay(report_file," MEMORY ARCHITECTURE REPORT ");
+    $fdisplay(report_file,"====================================");
+
+    $fdisplay(report_file,"Architecture  : pipelined");
+    $fdisplay(report_file,"DATA_WIDTH    : %0d", DATA_WIDTH);
+    $fdisplay(report_file,"ADDR_WIDTH    : %0d", ADDR_WIDTH);
+    $fdisplay(report_file,"READ_PORTS    : %0d", NUM_READ_PORTS);
+    $fdisplay(report_file,"WRITE_PORTS   : %0d", NUM_WRITE_PORTS);
+
+    $fdisplay(report_file,"");
+
+    $fdisplay(report_file,"Total Writes        : %0d", write_count);
+    $fdisplay(report_file,"Total Reads         : %0d", read_count);
+    $fdisplay(report_file,"Total Operations    : %0d", op_count);
+
+    $fdisplay(report_file,"Average Latency(ns) : %f", avg_latency);
+    $fdisplay(report_file,"Throughput(ops/cyc) : %f", throughput);
+
+    $fdisplay(report_file,"====================================");
+
+    $fclose(report_file);
+
 
     #50 $finish;
 
 end
+
 
 endmodule

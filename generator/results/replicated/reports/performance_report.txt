@@ -1,0 +1,15 @@
+====================================
+ MEMORY ARCHITECTURE REPORT 
+====================================
+Architecture  : replicated
+DATA_WIDTH    : 8
+ADDR_WIDTH    : 7
+READ_PORTS    : 3
+WRITE_PORTS   : 1
+
+Total Writes        : 25
+Total Reads         : 159
+Total Operations    : 184
+Average Latency(ns) : 0.188679
+Throughput(ops/cyc) : 3.471698
+====================================

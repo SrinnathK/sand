@@ -1,6 +1,8 @@
 m255
 K4
 z2
+!s12c _opt
+Z0 !s99 nomlopt
 !s11f vlog 2024.1 2024.02, Feb  1 2024
 13
 !s112 1.1
@@ -8,211 +10,265 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dF:/Sandisk/sand/generator/results/interleaved/tb
-vaddress_map_block
-Z1 2../rtl/address_map_block.v|../rtl/arbiter_round_robin.v|../rtl/bank_selector.v|../rtl/interleaved_bank_array.v|../rtl/interleaved_memory_controller.v|../rtl/interleaved_memory_top.v|../rtl/memory_bank.v|../rtl/read_mux.v
-Z2 !s110 1772796401
-!i10b 1
-!s100 A=GkLf4f`0JKG=fRc:1TK3
-IKN8EnkXh`m0XSamg9bGNc0
+Z1 dF:/Sandisk/sand/generator/results/interleaved/tb
+T_opt
+!s110 1772843081
+V1XAzJSdG9O>]z>47nIP]e0
+04 21 4 work interleaved_memory_tb fast 0
+=1-fc3497019aed-69ab7049-a1-4ec8
 R0
-Z3 w1772796365
+!s12f OEM100
+!s12b OEM100
+!s124 OEM100
+o-quiet -auto_acc_if_foreign -work work
+Z2 tCvgOpt 0
+n@_opt
+OL;O;2024.1;79
+vaddress_map_block
+Z3 2../rtl/address_map_block.v|../rtl/address_map_interleaved.v|../rtl/arbiter_round_robin.v|../rtl/bank_selector.v|../rtl/interleaved_bank_array.v|../rtl/interleaved_memory_controller.v|../rtl/interleaved_memory_top.v|../rtl/memory_bank.v|../rtl/read_mux.v
+Z4 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z5 !s110 1772843071
+!i10b 1
+!s100 CzlSJ1FeB3VBQdSnGZ>HZ1
+I;mDhU@8<SbN3mVQdmgJPU0
+S1
+R1
+w1772842824
 8../rtl/address_map_block.v
 F../rtl/address_map_block.v
-!i122 0
-L0 1 15
-Z4 VDg1SIo80bB@j0V0VzS_@n1
-Z5 OL;L;2024.1;79
+!i122 4
+Z6 L0 1 15
+Z7 VDg1SIo80bB@j0V0VzS_@n1
+Z8 OL;L;2024.1;79
 r1
 !s85 0
 31
-Z6 !s108 1772796401.000000
-Z7 !s107 ../rtl/read_mux.v|../rtl/memory_bank.v|../rtl/interleaved_memory_top.v|../rtl/interleaved_memory_controller.v|../rtl/interleaved_bank_array.v|../rtl/bank_selector.v|../rtl/arbiter_round_robin.v|../rtl/address_map_block.v|
-Z8 !s90 ../rtl/address_map_block.v|../rtl/arbiter_round_robin.v|../rtl/bank_selector.v|../rtl/interleaved_bank_array.v|../rtl/interleaved_memory_controller.v|../rtl/interleaved_memory_top.v|../rtl/memory_bank.v|../rtl/read_mux.v|
+Z9 !s108 1772843071.000000
+Z10 !s107 ../rtl/read_mux.v|../rtl/memory_bank.v|../rtl/interleaved_memory_top.v|../rtl/interleaved_memory_controller.v|../rtl/interleaved_bank_array.v|../rtl/bank_selector.v|../rtl/arbiter_round_robin.v|../rtl/address_map_interleaved.v|../rtl/address_map_block.v|
+Z11 !s90 -sv|../rtl/address_map_block.v|../rtl/address_map_interleaved.v|../rtl/arbiter_round_robin.v|../rtl/bank_selector.v|../rtl/interleaved_bank_array.v|../rtl/interleaved_memory_controller.v|../rtl/interleaved_memory_top.v|../rtl/memory_bank.v|../rtl/read_mux.v|
 !i113 0
-Z9 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-Z10 tCvgOpt 0
-varbiter_round_robin
-R1
+Z12 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R2
-!i10b 1
-!s100 FmaIT605C25:D]ANa>1T=3
-I_C0@oGLE7QN2]L[7L^MQh2
-R0
+vaddress_map_interleaved
 R3
+R4
+R5
+!i10b 1
+!s100 XhIh@=CYkTY<1IzGAbGP52
+I2^h:aGeWL=`nk9ZjJGFLj3
+S1
+R1
+Z13 w1772843057
+8../rtl/address_map_interleaved.v
+F../rtl/address_map_interleaved.v
+!i122 4
+R6
+R7
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 0
+R12
+R2
+varbiter_round_robin
+R3
+R4
+R5
+!i10b 1
+!s100 OXmFNhUDlV:DkT5<`djGi0
+Ib6Kh?lmKX>RDJ]7LcX9<`3
+S1
+R1
+R13
 8../rtl/arbiter_round_robin.v
 F../rtl/arbiter_round_robin.v
-!i122 0
+!i122 4
 L0 1 43
-R4
-R5
+R7
+R8
 r1
 !s85 0
 31
-R6
-R7
-R8
-!i113 0
 R9
 R10
-vbank_selector
-R1
+R11
+!i113 0
+R12
 R2
-!i10b 1
-!s100 N@5lGMN^8lCe[M;bGYaNG1
-IK4jC9<FOA@if8RZ4_@B]U0
-R0
+vbank_selector
 R3
+R4
+R5
+!i10b 1
+!s100 W`?1Ca^<]4_A0jUJj3`AW2
+IF`V7B:W3M9[NFiOo6Pj690
+S1
+R1
+R13
 8../rtl/bank_selector.v
 F../rtl/bank_selector.v
-!i122 0
-Z11 L0 1 25
-R4
-R5
+!i122 4
+Z14 L0 1 25
+R7
+R8
 r1
 !s85 0
 31
-R6
-R7
-R8
-!i113 0
 R9
 R10
-vinterleaved_bank_array
-R1
+R11
+!i113 0
+R12
 R2
-!i10b 1
-!s100 ?V2C7ZSbdKd0I=8c>cTB02
-Ik_@1@?z[7akoj0hO6B1cb1
-R0
+vinterleaved_bank_array
 R3
+R4
+R5
+!i10b 1
+!s100 :5e[4=<:kn`iJFT7084;h0
+I[JhZjb68d]z`<`O?kAc3:0
+S1
+R1
+R13
 8../rtl/interleaved_bank_array.v
 F../rtl/interleaved_bank_array.v
-!i122 0
+!i122 4
 L0 1 57
-R4
-R5
+R7
+R8
 r1
 !s85 0
 31
-R6
-R7
-R8
-!i113 0
 R9
 R10
-vinterleaved_memory_controller
-R1
+R11
+!i113 0
+R12
 R2
-!i10b 1
-!s100 nVmi9ICEUSl;h3fPBSDWN2
-I4Zcl?Qn1:C8S=_odEcc6H1
-R0
+vinterleaved_memory_controller
 R3
+R4
+R5
+!i10b 1
+!s100 1=6h:n4EfX0nTf]i1M>7O2
+IN5DEO`VN]]n<5aNNB1`Ic1
+S1
+R1
+R13
 8../rtl/interleaved_memory_controller.v
 F../rtl/interleaved_memory_controller.v
-!i122 0
+!i122 4
 L0 1 52
-R4
-R5
-r1
-!s85 0
-31
-R6
 R7
 R8
-!i113 0
-R9
-R10
-vinterleaved_memory_tb
-2interleaved_memory_tb.v
-!s110 1772796410
-!i10b 1
-!s100 RWbPnUFJhLb:QmHblSHO[0
-IQJNl?Ref5:YIf9mB84CMP0
-R0
-R3
-8interleaved_memory_tb.v
-Finterleaved_memory_tb.v
-!i122 1
-L0 3 86
-R4
-R5
 r1
 !s85 0
 31
-!s108 1772796410.000000
+R9
+R10
+R11
+!i113 0
+R12
+R2
+vinterleaved_memory_tb
+2interleaved_memory_tb.v
+!s110 1772843075
+!i10b 1
+!s100 dnj9UMUlQo@cIo@KXNNFd0
+IXI:GdYKQ_@HAM7SLn;`6m0
+R1
+R13
+8interleaved_memory_tb.v
+Finterleaved_memory_tb.v
+!i122 5
+L0 3 194
+R7
+R8
+r1
+!s85 0
+31
+!s108 1772843075.000000
 !s107 interleaved_memory_tb.v|
 !s90 interleaved_memory_tb.v|
 !i113 0
-R9
-R10
-vinterleaved_memory_top
-R1
+o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R2
-!i10b 1
-!s100 j_IHaW]ilc<Lo9jATzEUJ3
-IXX9YFUKLbFY=Z_4kD``mf3
-R0
+vinterleaved_memory_top
 R3
+R4
+R5
+!i10b 1
+!s100 9VDag;@>:E;AzK]KgJl4E0
+IC8:jZ1mTUK93I0fIEKmeb0
+S1
+R1
+R13
 8../rtl/interleaved_memory_top.v
 F../rtl/interleaved_memory_top.v
-!i122 0
+!i122 4
 L0 1 65
-R4
-R5
+R7
+R8
 r1
 !s85 0
 31
-R6
-R7
-R8
-!i113 0
 R9
 R10
-vmemory_bank
-R1
+R11
+!i113 0
+R12
 R2
-!i10b 1
-!s100 ^QD7ii>5DMD2;_8Ve[O<V2
-I7AR7jdZ7`KADnG:;dVSi63
-R0
+vmemory_bank
 R3
+R4
+R5
+!i10b 1
+!s100 <6RbL5c`PU^[l=SZR>68O1
+IPBbAC03O8T6Q:iTEBChS82
+S1
+R1
+R13
 8../rtl/memory_bank.v
 F../rtl/memory_bank.v
-!i122 0
+!i122 4
 L0 1 26
-R4
-R5
+R7
+R8
 r1
 !s85 0
 31
-R6
-R7
-R8
-!i113 0
 R9
 R10
-vread_mux
-R1
+R11
+!i113 0
+R12
 R2
-!i10b 1
-!s100 =eJO<W2gTi_U9e>ZCcUM?3
-I<aU`^I^AXE_G]bRTCV13J3
-R0
+vread_mux
 R3
+R4
+R5
+!i10b 1
+!s100 UAoEdUDMiz__2PB0CX9WZ1
+IXE]akEZlm8fegN;YYc9ek1
+S1
+R1
+w1772796365
 8../rtl/read_mux.v
 F../rtl/read_mux.v
-!i122 0
-R11
-R4
-R5
+!i122 4
+R14
+R7
+R8
 r1
 !s85 0
 31
-R6
-R7
-R8
-!i113 0
 R9
 R10
+R11
+!i113 0
+R12
+R2

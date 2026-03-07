@@ -1,7 +1,7 @@
 module replicated_memory_top
 #(
-    parameter DATA_WIDTH      = 32,
-parameter ADDR_WIDTH      = 11,
+    parameter DATA_WIDTH      = 8,
+parameter ADDR_WIDTH      = 7,
 parameter NUM_READ_PORTS  = 3
 )
 (

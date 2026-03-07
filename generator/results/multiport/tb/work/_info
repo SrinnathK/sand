@@ -1,0 +1,298 @@
+m255
+K4
+z2
+!s12c _opt
+Z0 !s99 nomlopt
+!s11f MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 dF:/Sandisk/sand/generator/results/Multiport_Arch/tb
+T_opt
+!s110 1772847075
+VLni@HB<QO?jdO;P4>S_=`3
+04 19 4 work multiport_memory_tb fast 0
+=1-fc3497019aed-69ab7fe3-1c0-22ac
+R0
+!s12f OEM100
+!s12b OEM100
+!s124 OEM100
+o-quiet -auto_acc_if_foreign -work work
+Z2 tCvgOpt 0
+n@_opt
+OL;O;2024.1;79
+vaddress_map_block
+Z3 2../rtl/address_map_block.v|../rtl/arbiter_round_robin.v|../rtl/bank_selector.v|../rtl/memory_bank.v|../rtl/multiport_controller.v|../rtl/multiport_memory_top.v|../rtl/pipeline_stage.v|../rtl/read_mux.v|../rtl/write_broadcast.v
+Z4 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z5 !s110 1772847065
+!i10b 1
+!s100 CzlSJ1FeB3VBQdSnGZ>HZ1
+I;mDhU@8<SbN3mVQdmgJPU0
+S1
+Z6 dF:/Sandisk/sand/generator/results/multiport/tb
+Z7 w1772847050
+8../rtl/address_map_block.v
+F../rtl/address_map_block.v
+!i122 39
+L0 1 15
+Z8 VDg1SIo80bB@j0V0VzS_@n1
+Z9 OL;L;2024.1;79
+r1
+!s85 0
+31
+Z10 !s108 1772847065.000000
+Z11 !s107 ../rtl/write_broadcast.v|../rtl/read_mux.v|../rtl/pipeline_stage.v|../rtl/multiport_memory_top.v|../rtl/multiport_controller.v|../rtl/memory_bank.v|../rtl/bank_selector.v|../rtl/arbiter_round_robin.v|../rtl/address_map_block.v|
+Z12 !s90 -sv|../rtl/address_map_block.v|../rtl/arbiter_round_robin.v|../rtl/bank_selector.v|../rtl/memory_bank.v|../rtl/multiport_controller.v|../rtl/multiport_memory_top.v|../rtl/pipeline_stage.v|../rtl/read_mux.v|../rtl/write_broadcast.v|
+!i113 0
+Z13 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+varbiter_round_robin
+R3
+R4
+R5
+!i10b 1
+!s100 oY:AHTY?iH>YPoTfS^WL12
+I:fF[^NhD>MiNY?IeglM=g2
+S1
+R6
+R7
+8../rtl/arbiter_round_robin.v
+F../rtl/arbiter_round_robin.v
+!i122 39
+L0 1 43
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R2
+vbank_selector
+R3
+R4
+R5
+!i10b 1
+!s100 W`?1Ca^<]4_A0jUJj3`AW2
+IF`V7B:W3M9[NFiOo6Pj690
+S1
+R6
+R7
+8../rtl/bank_selector.v
+F../rtl/bank_selector.v
+!i122 39
+L0 1 25
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R2
+vmemory_bank
+R3
+R4
+R5
+!i10b 1
+!s100 <6RbL5c`PU^[l=SZR>68O1
+IPBbAC03O8T6Q:iTEBChS82
+S1
+R6
+R7
+8../rtl/memory_bank.v
+F../rtl/memory_bank.v
+!i122 39
+L0 1 26
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R2
+vMultiport_Arch_memory_tb
+2Multiport_Arch_memory_tb.v
+!s110 1772816816
+!i10b 1
+!s100 fLPnVQa5oWYW7K;Hnl:lM2
+I8SK`Bm?7?8m7dBUZARGV^2
+R1
+w1772816120
+8Multiport_Arch_memory_tb.v
+FMultiport_Arch_memory_tb.v
+!i122 12
+L0 3 199
+R8
+R9
+r1
+!s85 0
+31
+!s108 1772816816.000000
+!s107 Multiport_Arch_memory_tb.v|
+!s90 Multiport_Arch_memory_tb.v|
+!i113 0
+Z14 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+n@multiport_@arch_memory_tb
+vmultiport_controller
+R3
+R4
+R5
+!i10b 1
+!s100 9E4[jnETSfi_n9AF952F=1
+IHOLUo==cWfn1cJIV<zW]i3
+S1
+R6
+R7
+8../rtl/multiport_controller.v
+F../rtl/multiport_controller.v
+!i122 39
+L0 1 190
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R2
+vmultiport_memory_tb
+2multiport_memory_tb.v
+!s110 1772847069
+!i10b 1
+!s100 XW_WIAI?H;`O72TKFMXYg2
+I_TN<PRhmI?Z8>0O5LJ3d]3
+R6
+R7
+8multiport_memory_tb.v
+Fmultiport_memory_tb.v
+!i122 40
+L0 3 194
+R8
+R9
+r1
+!s85 0
+31
+!s108 1772847069.000000
+!s107 multiport_memory_tb.v|
+!s90 multiport_memory_tb.v|
+!i113 0
+R14
+R2
+vmultiport_memory_top
+R3
+R4
+R5
+!i10b 1
+!s100 [oFi>bof;IecK^MVb4?[c0
+IL[3?1^D0deWYQK<I=^`@i1
+S1
+R6
+R7
+8../rtl/multiport_memory_top.v
+F../rtl/multiport_memory_top.v
+!i122 39
+L0 1 90
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R2
+vpipeline_stage
+R3
+R4
+R5
+!i10b 1
+!s100 Q`zomLjj57H==>2z[o1TP1
+IgO0zd2aL4Em[`@gzYzG=N3
+S1
+R6
+R7
+8../rtl/pipeline_stage.v
+F../rtl/pipeline_stage.v
+!i122 39
+L0 1 27
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R2
+vread_mux
+R3
+R4
+R5
+!i10b 1
+!s100 S;;ejmdVoC4GSP6`B=[MC3
+IB_H0zORJf_4AV_SJHhYVh3
+S1
+R6
+R7
+8../rtl/read_mux.v
+F../rtl/read_mux.v
+!i122 39
+L0 1 23
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R2
+vwrite_broadcast
+R3
+R4
+R5
+!i10b 1
+!s100 ?GXo4Z^AYFLF6MfzBX1WM2
+I_5MUEno29;>JK`<KP;;Io0
+S1
+R6
+R7
+8../rtl/write_broadcast.v
+F../rtl/write_broadcast.v
+!i122 39
+L0 1 31
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
+R2
