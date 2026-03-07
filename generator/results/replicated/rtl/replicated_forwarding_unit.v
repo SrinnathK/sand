@@ -1,7 +1,7 @@
 module replicated_forwarding_unit
 #(
-    parameter DATA_WIDTH = 32,
-parameter ADDR_WIDTH = 11
+    parameter DATA_WIDTH = 8,
+parameter ADDR_WIDTH = 7
 )
 (
     input wire [ADDR_WIDTH-1:0] read_addr,

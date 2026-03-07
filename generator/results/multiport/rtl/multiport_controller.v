@@ -1,0 +1,190 @@
+module multiport_controller #
+(
+parameter MEMORY_SIZE   = 1024,
+parameter DATA_WIDTH    = 8,
+parameter NUM_PORTS     = 4,
+parameter READ_PORTS    = 2,
+parameter WRITE_PORTS   = 2,
+parameter MAX_BANKS     = 4,
+parameter ARBITER_TYPE  = 0,
+parameter ADDR_MAP_TYPE = 0
+)
+
+(
+input clk,
+input rst,
+
+input  [NUM_PORTS-1:0] req,
+input  [NUM_PORTS-1:0] we,
+
+input  [NUM_PORTS*32-1:0] addr,
+input  [NUM_PORTS*DATA_WIDTH-1:0] wdata,
+
+output [NUM_PORTS-1:0] grant,
+output [NUM_PORTS*$clog2(MAX_BANKS)-1:0] bank_sel,
+output [NUM_PORTS*DATA_WIDTH-1:0] rdata
+);
+
+
+wire [NUM_PORTS*DATA_WIDTH-1:0] bank_rdata;
+wire [NUM_PORTS*$clog2(MAX_BANKS)-1:0] mapped_bank;
+
+
+/////////////////////////////////////////////////////
+// Address Mapping
+/////////////////////////////////////////////////////
+
+generate
+
+if(ADDR_MAP_TYPE == 0) begin
+
+address_map_block #(
+.NUM_BANKS(MAX_BANKS)
+)
+mapper(
+.addr(addr),
+.bank(mapped_bank)
+);
+
+end
+
+else if(ADDR_MAP_TYPE == 1) begin
+
+address_map_interleaved #(
+.NUM_BANKS(MAX_BANKS)
+)
+mapper(
+.addr(addr),
+.bank(mapped_bank)
+);
+
+end
+
+else begin
+
+address_map_xor #(
+.NUM_BANKS(MAX_BANKS)
+)
+mapper(
+.addr(addr),
+.bank(mapped_bank)
+);
+
+end
+
+endgenerate
+
+assign bank_sel = mapped_bank;
+
+
+/////////////////////////////////////////////////////
+// Arbiter
+/////////////////////////////////////////////////////
+
+generate
+
+if(ARBITER_TYPE == 0) begin
+
+arbiter_round_robin #(
+.N(NUM_PORTS)
+)
+arb(
+.clk(clk),
+.req(req),
+.grant(grant)
+);
+
+end
+
+else if(ARBITER_TYPE == 1) begin
+
+arbiter_priority #(
+.N(NUM_PORTS)
+)
+arb(
+.req(req),
+.grant(grant)
+);
+
+end
+
+else begin
+
+arbiter_age_based #(
+.N(NUM_PORTS)
+)
+arb(
+.clk(clk),
+.req(req),
+.grant(grant)
+);
+
+end
+
+endgenerate
+
+
+/////////////////////////////////////////////////////
+// Write Broadcast
+/////////////////////////////////////////////////////
+
+wire [NUM_PORTS-1:0] we_broadcast;
+wire [NUM_PORTS*32-1:0] addr_broadcast;
+wire [NUM_PORTS*DATA_WIDTH-1:0] write_data_broadcast;
+
+write_broadcast #(
+.NUM_REPLICAS(NUM_PORTS),
+.ADDR_WIDTH(32),
+.DATA_WIDTH(DATA_WIDTH)
+)
+broadcast(
+.write_enable(we[0]),                // single write enable
+.write_addr(addr[31:0]),             // first port address
+.write_data(wdata[DATA_WIDTH-1:0]),  // first port data
+
+.we_out(we_broadcast),
+.addr_out(addr_broadcast),
+.data_out(write_data_broadcast)
+);
+
+/////////////////////////////////////////////////////
+// Memory Banks
+/////////////////////////////////////////////////////
+
+genvar i;
+
+generate
+for(i = 0; i < MAX_BANKS; i = i + 1)
+begin : BANKS
+
+memory_bank #(
+.DATA_WIDTH(DATA_WIDTH)
+)
+bank
+(
+.clk(clk),
+.we(we[i % NUM_PORTS]),
+.addr(addr[32*(i % NUM_PORTS) +: 32]),
+.write_data(write_data_broadcast[DATA_WIDTH*(i % NUM_PORTS) +: DATA_WIDTH]),
+.read_data(bank_rdata[DATA_WIDTH*(i % NUM_PORTS) +: DATA_WIDTH])
+);
+
+end
+endgenerate
+
+
+/////////////////////////////////////////////////////
+// Read MUX
+/////////////////////////////////////////////////////
+
+read_mux #(
+.NUM_BANKS(MAX_BANKS),
+.DATA_WIDTH(DATA_WIDTH)
+)
+mux(
+.bank_select(mapped_bank),
+.bank_data(bank_rdata),
+.read_data(rdata)
+);
+
+endmodule

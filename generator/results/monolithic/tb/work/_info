@@ -1,6 +1,8 @@
 m255
 K4
 z2
+!s12c _opt
+Z0 !s99 nomlopt
 !s11f vlog 2024.1 2024.02, Feb  1 2024
 13
 !s112 1.1
@@ -8,234 +10,290 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dF:/Sandisk/sand/generator/results/monolithic/tb
-vaddress_map_block
-Z1 2../rtl/address_map_block.v|../rtl/arbiter_round_robin.v|../rtl/bank_selector.v|../rtl/memory_bank.v|../rtl/monolithic_decode_stage.v|../rtl/monolithic_memory_stage.v|../rtl/monolithic_memory_top.v|../rtl/monolithic_output_stage.v|../rtl/monolithic_request_stage.v
-Z2 !s110 1772796227
-!i10b 1
-!s100 2CQO5b0j>Q3hSn0_`S95@2
-IhCg9RC2aT1FKlK?cmPgYD0
+Z1 dF:/Sandisk/sand/generator/results/monolithic/tb
+T_opt
+!s110 1772841653
+VcXn5c?6>jFMzb>V^IYFzo2
+04 20 4 work monolithic_memory_tb fast 0
+=1-fc3497019aed-69ab6ab5-18b-52a4
 R0
-Z3 w1772796198
+!s12f OEM100
+!s12b OEM100
+!s124 OEM100
+o-quiet -auto_acc_if_foreign -work work
+Z2 tCvgOpt 0
+n@_opt
+OL;O;2024.1;79
+vaddress_map_block
+Z3 2../rtl/address_map_block.v|../rtl/arbiter_round_robin.v|../rtl/bank_selector.v|../rtl/memory_bank.v|../rtl/monolithic_decode_stage.v|../rtl/monolithic_memory_stage.v|../rtl/monolithic_memory_top.v|../rtl/monolithic_output_stage.v|../rtl/monolithic_request_stage.v|../rtl/read_mux.v
+Z4 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z5 !s110 1772841642
+!i10b 1
+!s100 CzlSJ1FeB3VBQdSnGZ>HZ1
+I;mDhU@8<SbN3mVQdmgJPU0
+S1
+R1
+Z6 w1772841623
 8../rtl/address_map_block.v
 F../rtl/address_map_block.v
-!i122 0
+!i122 7
 L0 1 15
-Z4 VDg1SIo80bB@j0V0VzS_@n1
-Z5 OL;L;2024.1;79
+Z7 VDg1SIo80bB@j0V0VzS_@n1
+Z8 OL;L;2024.1;79
 r1
 !s85 0
 31
-Z6 !s108 1772796226.000000
-Z7 !s107 ../rtl/monolithic_request_stage.v|../rtl/monolithic_output_stage.v|../rtl/monolithic_memory_top.v|../rtl/monolithic_memory_stage.v|../rtl/monolithic_decode_stage.v|../rtl/memory_bank.v|../rtl/bank_selector.v|../rtl/arbiter_round_robin.v|../rtl/address_map_block.v|
-Z8 !s90 ../rtl/address_map_block.v|../rtl/arbiter_round_robin.v|../rtl/bank_selector.v|../rtl/memory_bank.v|../rtl/monolithic_decode_stage.v|../rtl/monolithic_memory_stage.v|../rtl/monolithic_memory_top.v|../rtl/monolithic_output_stage.v|../rtl/monolithic_request_stage.v|
+Z9 !s108 1772841641.000000
+Z10 !s107 ../rtl/read_mux.v|../rtl/monolithic_request_stage.v|../rtl/monolithic_output_stage.v|../rtl/monolithic_memory_top.v|../rtl/monolithic_memory_stage.v|../rtl/monolithic_decode_stage.v|../rtl/memory_bank.v|../rtl/bank_selector.v|../rtl/arbiter_round_robin.v|../rtl/address_map_block.v|
+Z11 !s90 -sv|../rtl/address_map_block.v|../rtl/arbiter_round_robin.v|../rtl/bank_selector.v|../rtl/memory_bank.v|../rtl/monolithic_decode_stage.v|../rtl/monolithic_memory_stage.v|../rtl/monolithic_memory_top.v|../rtl/monolithic_output_stage.v|../rtl/monolithic_request_stage.v|../rtl/read_mux.v|
 !i113 0
-Z9 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-Z10 tCvgOpt 0
-varbiter_round_robin
-R1
+Z12 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R2
-!i10b 1
-!s100 e@hUZCWPzi5XL2YNQF_mA2
-I=lz3VLoZN>[;E2[[c4UFi0
-R0
+varbiter_round_robin
 R3
+R4
+R5
+!i10b 1
+!s100 oY:AHTY?iH>YPoTfS^WL12
+I:fF[^NhD>MiNY?IeglM=g2
+S1
+R1
+R6
 8../rtl/arbiter_round_robin.v
 F../rtl/arbiter_round_robin.v
-!i122 0
+!i122 7
 L0 1 43
-R4
-R5
+R7
+R8
 r1
 !s85 0
 31
-R6
-R7
-R8
-!i113 0
 R9
 R10
-vbank_selector
-R1
+R11
+!i113 0
+R12
 R2
-!i10b 1
-!s100 A8VN3P;;LXo5W8Mk5;m5P3
-I`eeAaFchM@R9WQQFz7:YM3
-R0
+vbank_selector
 R3
+R4
+R5
+!i10b 1
+!s100 W`?1Ca^<]4_A0jUJj3`AW2
+IF`V7B:W3M9[NFiOo6Pj690
+S1
+R1
+R6
 8../rtl/bank_selector.v
 F../rtl/bank_selector.v
-!i122 0
+!i122 7
 L0 1 25
-R4
-R5
+R7
+R8
 r1
 !s85 0
 31
-R6
-R7
-R8
-!i113 0
 R9
 R10
-vmemory_bank
-R1
+R11
+!i113 0
+R12
 R2
-!i10b 1
-!s100 ^QD7ii>5DMD2;_8Ve[O<V2
-I7AR7jdZ7`KADnG:;dVSi63
-R0
+vmemory_bank
 R3
+R4
+R5
+!i10b 1
+!s100 <6RbL5c`PU^[l=SZR>68O1
+IPBbAC03O8T6Q:iTEBChS82
+S1
+R1
+R6
 8../rtl/memory_bank.v
 F../rtl/memory_bank.v
-!i122 0
-Z11 L0 1 26
-R4
-R5
+!i122 7
+Z13 L0 1 26
+R7
+R8
 r1
 !s85 0
 31
-R6
-R7
-R8
-!i113 0
 R9
 R10
-vmonolithic_decode_stage
-R1
+R11
+!i113 0
+R12
 R2
-!i10b 1
-!s100 ldG20?oMOS=eEjfMoI4b`1
-IYHidFIOlEF_gcJ^^Ib]033
-R0
+vmonolithic_decode_stage
 R3
+R4
+R5
+!i10b 1
+!s100 B9L5ZChkiCHfM=[5_@NYh1
+I3l@>omfOdA`^2iIk<eYZj0
+S1
+R1
+R6
 8../rtl/monolithic_decode_stage.v
 F../rtl/monolithic_decode_stage.v
-!i122 0
-Z12 L0 1 19
-R4
-R5
+!i122 7
+Z14 L0 1 19
+R7
+R8
 r1
 !s85 0
 31
-R6
-R7
-R8
-!i113 0
 R9
 R10
-vmonolithic_memory_stage
-R1
+R11
+!i113 0
+R12
 R2
-!i10b 1
-!s100 YaiY8j27L6T64dl0NW@D10
-I_dQS2_]o183TaOzHzMTAY3
-R0
+vmonolithic_memory_stage
 R3
+R4
+R5
+!i10b 1
+!s100 zFoYm]BcW:;znk_m:LCXT0
+I8WML`V3n7AdD6N:8b9=6Y3
+S1
+R1
+R6
 8../rtl/monolithic_memory_stage.v
 F../rtl/monolithic_memory_stage.v
-!i122 0
+!i122 7
 L0 1 28
-R4
-R5
-r1
-!s85 0
-31
-R6
 R7
 R8
-!i113 0
-R9
-R10
-vmonolithic_memory_tb
-2monolithic_memory_tb.v
-!s110 1772796237
-!i10b 1
-!s100 G^9gSI_18W9FD;l1``Oko2
-I;VRH]Z=i;4Y^[j^HoZ]KG1
-R0
-R3
-8monolithic_memory_tb.v
-Fmonolithic_memory_tb.v
-!i122 1
-L0 3 86
-R4
-R5
 r1
 !s85 0
 31
-!s108 1772796237.000000
+R9
+R10
+R11
+!i113 0
+R12
+R2
+vmonolithic_memory_tb
+2monolithic_memory_tb.v
+!s110 1772841646
+!i10b 1
+!s100 MjX>6:KFVW::AMYI2YgKJ0
+I:Y7JFWV4^S?]_F:9OBLOj3
+R1
+R6
+8monolithic_memory_tb.v
+Fmonolithic_memory_tb.v
+!i122 8
+L0 3 194
+R7
+R8
+r1
+!s85 0
+31
+!s108 1772841646.000000
 !s107 monolithic_memory_tb.v|
 !s90 monolithic_memory_tb.v|
 !i113 0
-R9
-R10
-vmonolithic_memory_top
-R1
+o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R2
-!i10b 1
-!s100 R@_1UH_9U`SSgUEOO[0VZ1
-I;`_gF_4l^M>2?z19`:P[]2
-R0
+vmonolithic_memory_top
 R3
+R4
+R5
+!i10b 1
+!s100 Ml8lMIIjEajX1<J;638f90
+IR3SNzI3[LG<m8]UehU?EN2
+S1
+R1
+R6
 8../rtl/monolithic_memory_top.v
 F../rtl/monolithic_memory_top.v
-!i122 0
+!i122 7
 L0 1 97
-R4
-R5
+R7
+R8
 r1
 !s85 0
 31
-R6
-R7
-R8
-!i113 0
 R9
 R10
-vmonolithic_output_stage
-R1
+R11
+!i113 0
+R12
 R2
-!i10b 1
-!s100 zEKCI]jT_cLo^`eSROI;60
-IV<M_1z[hgPE]2:hh[WEn23
-R0
+vmonolithic_output_stage
 R3
+R4
+R5
+!i10b 1
+!s100 OQClIaChJIl>gNZS@87`53
+ISSWDJkc@6naf^adB@;dB:1
+S1
+R1
+R6
 8../rtl/monolithic_output_stage.v
 F../rtl/monolithic_output_stage.v
-!i122 0
-R12
-R4
-R5
+!i122 7
+R14
+R7
+R8
 r1
 !s85 0
 31
-R6
-R7
-R8
-!i113 0
 R9
 R10
-vmonolithic_request_stage
-R1
+R11
+!i113 0
+R12
 R2
-!i10b 1
-!s100 oM>TJjzhg[JALE9czdk5:1
-IXL=8AVaTYej82PEZL[dK51
-R0
+vmonolithic_request_stage
 R3
+R4
+R5
+!i10b 1
+!s100 i8bZ46on`7oaJ=^QO;3De0
+IRdz3;m67HngH0f7[[KlZH2
+S1
+R1
+R6
 8../rtl/monolithic_request_stage.v
 F../rtl/monolithic_request_stage.v
-!i122 0
-R11
-R4
-R5
+!i122 7
+R13
+R7
+R8
 r1
 !s85 0
 31
-R6
-R7
-R8
-!i113 0
 R9
 R10
+R11
+!i113 0
+R12
+R2
+vread_mux
+R3
+R4
+R5
+!i10b 1
+!s100 S;;ejmdVoC4GSP6`B=[MC3
+IB_H0zORJf_4AV_SJHhYVh3
+S1
+R1
+R6
+8../rtl/read_mux.v
+F../rtl/read_mux.v
+!i122 7
+L0 1 23
+R7
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 0
+R12
+R2

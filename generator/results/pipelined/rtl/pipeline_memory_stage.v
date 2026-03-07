@@ -2,7 +2,7 @@ module pipeline_memory_stage
 #(
     parameter DATA_WIDTH = 8,
 parameter ADDR_WIDTH = 7,
-parameter NUM_BANKS  = 4
+parameter NUM_BANKS  = 2
 )
 (
     input wire clk,

@@ -2,7 +2,7 @@ module pipelined_memory_top
 #(
     parameter DATA_WIDTH = 8,
 parameter ADDR_WIDTH = 7,
-parameter NUM_BANKS  = 4
+parameter NUM_BANKS  = 2
 )
 (
     input wire clk,
@@ -111,8 +111,6 @@ pipeline_memory_stage
 mem_stage
 (
     .clk(clk),
-    .reset(reset),
-
     .in_valid(stage3_valid),
     .in_write(stage3_write),
     .in_addr(stage3_addr),

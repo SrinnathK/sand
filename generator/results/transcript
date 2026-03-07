@@ -1,0 +1,7 @@
+# vsim -c multiport_memory_tb -do "run -all; quit" 
+# Start time: 06:55:39 on Mar 07,2026
+# ** Error (suppressible): (vsim-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# Error loading design
+# End time: 06:55:39 on Mar 07,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0

@@ -3,38 +3,42 @@ MEMORY ARCHITECTURE REPORT
 
 Selected Architecture
 ---------------------
-REPLICATED MEMORY
+replicated
 
 User Inputs
 -----------
-memory_size: 65536
-data_width: 32
-num_ports: 4
+memory_size: 1024
+data_width: 8
+num_ports: 3
 read_ports: 3
 write_ports: 1
-num_banks: 4
+num_banks: 2
 clock_frequency: 500
 priority: latency
 access_pattern: random
+N: 3
 
 Derived Parameters
 ------------------
-DATA_WIDTH: 32
-MEMORY_SIZE: 65536
-MEMORY_DEPTH: 2048
-ADDR_WIDTH: 11
-NUM_PORTS: 4
+DATA_WIDTH: 8
+MEMORY_SIZE: 1024
+MEMORY_DEPTH: 128
+ADDR_WIDTH: 7
+NUM_PORTS: 3
 NUM_READ_PORTS: 3
 NUM_WRITE_PORTS: 1
-NUM_BANKS: 4
-BANK_INDEX_WIDTH: 2
-BANK_ADDR_WIDTH: 9
+READ_PORTS: 3
+WRITE_PORTS: 1
+N: 3
+NUM_BANKS: 2
+MAX_BANKS: 2
+BANK_INDEX_WIDTH: 1
+BANK_ADDR_WIDTH: 6
 PIPELINE_DEPTH: 1
 CLOCK_FREQUENCY: 500
-ACCESS_PATTERN: random
-PRIORITY: latency
+ACCESS_PATTERN: 0
+PRIORITY: 0
+NUM_REPLICAS: 3
+ARBITER_TYPE: 0
+ADDR_MAP_TYPE: 0
 ARCHITECTURE: replicated
-
-Architecture Explanation
-------------------------
-Replication was selected because multiple read ports are required. Each memory replica supports a read port while writes are broadcast to all replicas.

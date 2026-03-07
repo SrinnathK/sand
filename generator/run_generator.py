@@ -30,23 +30,35 @@ def load_input():
 
 def select_architecture(cfg):
 
-    if cfg["num_ports"] > 4:
-        return "Multiport_Arch"
+    num_ports = cfg["num_ports"]
+    read_ports = cfg["read_ports"]
+    write_ports = cfg["write_ports"]
+    clock_frequency = cfg["clock_frequency"]
+    priority = cfg["priority"]
+    access_pattern = cfg["access_pattern"]
+    num_banks = cfg["num_banks"]
+    pipeline_depth = cfg.get("pipeline_depth", 1)
 
-    if cfg["read_ports"] > 2:
-        return "replicated"
-
-    if cfg["priority"] == "bandwidth":
-        return "banked"
-
-    if cfg["clock_frequency"] > 700:
+    if clock_frequency >= 800 and pipeline_depth >= 2 and priority == "bandwidth":
         return "pipelined"
 
-    if cfg["access_pattern"] == "sequential":
+    elif read_ports >= 3 and write_ports <= 1 and 300 <= clock_frequency <= 1500 and priority == "latency":
+        return "replicated"
+
+    elif num_ports >= 4 and priority in ["latency", "bandwidth"] and clock_frequency >= 500:
+        return "multiport"
+
+    elif access_pattern == "sequential" and num_banks >= 4 and clock_frequency >= 300 and priority == "bandwidth":
         return "interleaved"
 
-    return "monolithic"
+    elif num_ports >= 2 and access_pattern == "random" and num_banks >= 2 and priority in ["bandwidth", "power"]:
+        return "banked"
 
+    elif num_ports <= 1 and clock_frequency <= 200:
+        return "monolithic"
+
+    else:
+        return "banked"
 
 # -------------------------------------
 # Compute Parameters
@@ -92,6 +104,8 @@ def compute_parameters(cfg):
     params["CLOCK_FREQUENCY"] = cfg["clock_frequency"]
     params["ACCESS_PATTERN"] = cfg["access_pattern"]
     params["PRIORITY"] = cfg["priority"]
+
+    params["NUM_REPLICAS"] = cfg["read_ports"]   
 
     # arbiter + address mapping
     arb_map = {
@@ -199,7 +213,7 @@ def generate_shared_modules(arch, cfg, params):
     # Address Mapping
     # -----------------------------
 
-    if arch == "pipelined":
+    if arch in ["pipelined", "interleaved", "banked"]:
         addr_type = "interleaved"
     else:
         addr_type = cfg.get("addr_map_type", "block")
@@ -247,7 +261,8 @@ def generate_shared_modules(arch, cfg, params):
         if not file.endswith(".j2"):
             continue
 
-        if file == "write_broadcast.v.j2" and arch != "replicated":
+        if file == "write_broadcast.v.j2" and arch not in ["replicated", "multiport"]:
+
             continue
 
         if file == "read_mux.v.j2" and cfg["read_ports"] <= 1:
@@ -272,7 +287,7 @@ def generate_shared_modules(arch, cfg, params):
     # Pipeline Modules
     # -----------------------------
 
-    if arch == "pipelined":
+    if arch in ["pipelined", "multiport"]:
 
         pipe_folder = os.path.join(TEMPLATE_DIR, "shared_modules", "pipeline")
 
@@ -381,14 +396,6 @@ def main():
     print("\nResults located at:")
 
     print(f"{RESULT_DIR}/{arch}/")
-
-    print("\nRun simulation using:")
-
-    print(f"""
-cd results/{arch}/tb
-iverilog -o sim ../rtl/*.v *.v
-vvp sim
-""")
 
 if __name__ == "__main__":
     main()

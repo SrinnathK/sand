@@ -1,6 +1,6 @@
 module arbiter_round_robin
 #(
-    parameter N = 3
+    parameter N = 2
 )
 (
     input wire clk,
