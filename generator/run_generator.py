@@ -12,24 +12,26 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE_DIR = os.path.join(SCRIPT_DIR, "templates")
 RESULT_DIR = os.path.join(SCRIPT_DIR, "results")
 
-
 # -------------------------------------
-# Load user input
+# Load input.yaml
 # -------------------------------------
 
 def load_input():
 
-    input_path = os.path.join(SCRIPT_DIR, "input.yaml")
+    input_file = os.path.join(SCRIPT_DIR, "input.yaml")
 
-    with open(input_path) as f:
+    with open(input_file) as f:
         return yaml.safe_load(f)
 
 
 # -------------------------------------
-# Architecture decision logic
+# Architecture Selection
 # -------------------------------------
 
 def select_architecture(cfg):
+
+    if cfg["num_ports"] > 4:
+        return "Multiport_Arch"
 
     if cfg["read_ports"] > 2:
         return "replicated"
@@ -47,7 +49,7 @@ def select_architecture(cfg):
 
 
 # -------------------------------------
-# Compute RTL parameters
+# Compute Parameters
 # -------------------------------------
 
 def compute_parameters(cfg):
@@ -64,10 +66,18 @@ def compute_parameters(cfg):
     params["ADDR_WIDTH"] = addr_width
 
     params["NUM_PORTS"] = cfg["num_ports"]
+
     params["NUM_READ_PORTS"] = cfg["read_ports"]
     params["NUM_WRITE_PORTS"] = cfg["write_ports"]
 
+    # required by some RTL templates
+    params["READ_PORTS"] = cfg["read_ports"]
+    params["WRITE_PORTS"] = cfg["write_ports"]
+
+    params["N"] = cfg["N"]
+
     params["NUM_BANKS"] = cfg["num_banks"]
+    params["MAX_BANKS"] = cfg["num_banks"]
 
     bank_index_width = math.ceil(math.log2(cfg["num_banks"]))
     params["BANK_INDEX_WIDTH"] = bank_index_width
@@ -83,11 +93,40 @@ def compute_parameters(cfg):
     params["ACCESS_PATTERN"] = cfg["access_pattern"]
     params["PRIORITY"] = cfg["priority"]
 
+    # arbiter + address mapping
+    arb_map = {
+        "round_robin": 0,
+        "priority": 1,
+        "age_based": 2
+    }
+
+    addr_map = {
+        "block": 0,
+        "interleaved": 1,
+        "xor": 2
+    }
+
+    priority_map = {
+    "latency": 0,
+    "bandwidth": 1
+}
+
+    access_map = {
+    "random": 0,
+    "sequential": 1
+}
+
+    params["PRIORITY"] = priority_map.get(cfg["priority"], 0)
+    params["ACCESS_PATTERN"] = access_map.get(cfg["access_pattern"], 0)
+
+    params["ARBITER_TYPE"] = arb_map.get(cfg.get("arbiter_type", "round_robin"), 0)
+    params["ADDR_MAP_TYPE"] = addr_map.get(cfg.get("addr_map_type", "block"), 0)
+
     return params
 
 
 # -------------------------------------
-# Create result folders
+# Create Output Directories
 # -------------------------------------
 
 def create_result_dirs(arch):
@@ -106,22 +145,22 @@ def create_result_dirs(arch):
 
 
 # -------------------------------------
-# Generate RTL files
+# Generate Architecture RTL
 # -------------------------------------
 
-def generate_rtl(arch, params):
+def generate_architecture_rtl(arch, params):
 
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
 
     rtl_dir, _, _ = create_result_dirs(arch)
 
-    template_path = os.path.join(TEMPLATE_DIR, "architectures", arch)
+    arch_folder = os.path.join(TEMPLATE_DIR, "architectures", arch)
 
-    if not os.path.exists(template_path):
-        print(f"ERROR: Architecture template folder not found: {template_path}")
+    if not os.path.exists(arch_folder):
+        print("ERROR: Architecture template not found:", arch_folder)
         return
 
-    for root, dirs, files in os.walk(template_path):
+    for root, dirs, files in os.walk(arch_folder):
 
         for file in files:
 
@@ -130,21 +169,131 @@ def generate_rtl(arch, params):
                 full_path = os.path.join(root, file)
 
                 rel_path = os.path.relpath(full_path, TEMPLATE_DIR)
-
                 rel_path = rel_path.replace("\\", "/")
 
                 template = env.get_template(rel_path)
 
-                output_text = template.render(params)
+                rendered = template.render(params)
 
-                output_filename = os.path.basename(file).replace(".j2", "")
+                output_name = file.replace(".j2", "")
 
-                output_file = os.path.join(rtl_dir, output_filename)
+                output_path = os.path.join(rtl_dir, output_name)
 
-                with open(output_file, "w") as f:
-                    f.write(output_text)
+                with open(output_path, "w") as f:
+                    f.write(rendered)
 
-                print("Generated RTL:", output_file)
+                print("Generated RTL:", output_path)
+
+
+# -------------------------------------
+# Generate Shared Modules
+# -------------------------------------
+
+def generate_shared_modules(arch, cfg, params):
+
+    env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
+
+    rtl_dir, _, _ = create_result_dirs(arch)
+
+    # -----------------------------
+    # Address Mapping
+    # -----------------------------
+
+    if arch == "pipelined":
+        addr_type = "interleaved"
+    else:
+        addr_type = cfg.get("addr_map_type", "block")
+
+    addr_template = f"shared_modules/address_mapping/address_map_{addr_type}.v.j2"
+
+    template = env.get_template(addr_template)
+
+    rendered = template.render(params)
+
+    output = os.path.join(rtl_dir, f"address_map_{addr_type}.v")
+
+    with open(output, "w") as f:
+        f.write(rendered)
+
+    print("Generated:", output)
+
+    # -----------------------------
+    # Arbiter
+    # -----------------------------
+
+    arbiter_type = cfg.get("arbiter_type", "round_robin")
+
+    arb_template = f"shared_modules/arbiters/arbiter_{arbiter_type}.v.j2"
+
+    template = env.get_template(arb_template)
+
+    rendered = template.render(params)
+
+    output = os.path.join(rtl_dir, f"arbiter_{arbiter_type}.v")
+
+    with open(output, "w") as f:
+        f.write(rendered)
+
+    print("Generated:", output)
+
+    # -----------------------------
+    # Memory Modules
+    # -----------------------------
+
+    mem_folder = os.path.join(TEMPLATE_DIR, "shared_modules", "memory")
+
+    for file in os.listdir(mem_folder):
+
+        if not file.endswith(".j2"):
+            continue
+
+        if file == "write_broadcast.v.j2" and arch != "replicated":
+            continue
+
+        if file == "read_mux.v.j2" and cfg["read_ports"] <= 1:
+            continue
+
+        template_path = f"shared_modules/memory/{file}"
+
+        template = env.get_template(template_path)
+
+        rendered = template.render(params)
+
+        output_name = file.replace(".j2", "")
+
+        output = os.path.join(rtl_dir, output_name)
+
+        with open(output, "w") as f:
+            f.write(rendered)
+
+        print("Generated:", output)
+
+    # -----------------------------
+    # Pipeline Modules
+    # -----------------------------
+
+    if arch == "pipelined":
+
+        pipe_folder = os.path.join(TEMPLATE_DIR, "shared_modules", "pipeline")
+
+        for file in os.listdir(pipe_folder):
+
+            if file.endswith(".j2"):
+
+                template_path = f"shared_modules/pipeline/{file}"
+
+                template = env.get_template(template_path)
+
+                rendered = template.render(params)
+
+                output_name = file.replace(".j2", "")
+
+                output = os.path.join(rtl_dir, output_name)
+
+                with open(output, "w") as f:
+                    f.write(rendered)
+
+                print("Generated:", output)
 
 
 # -------------------------------------
@@ -159,18 +308,18 @@ def generate_testbench(arch, params):
 
     template = env.get_template("testbench/memory_tb.v.j2")
 
-    output = template.render(params)
+    rendered = template.render(params)
 
     tb_file = os.path.join(tb_dir, f"{arch}_memory_tb.v")
 
     with open(tb_file, "w") as f:
-        f.write(output)
+        f.write(rendered)
 
-    print("Generated TB:", tb_file)
+    print("Generated Testbench:", tb_file)
 
 
 # -------------------------------------
-# Generate Architecture Report
+# Generate Report
 # -------------------------------------
 
 def generate_report(arch, cfg, params):
@@ -186,7 +335,7 @@ def generate_report(arch, cfg, params):
 
         f.write("Selected Architecture\n")
         f.write("---------------------\n")
-        f.write(f"{arch.upper()} MEMORY\n\n")
+        f.write(f"{arch}\n\n")
 
         f.write("User Inputs\n")
         f.write("-----------\n")
@@ -200,45 +349,11 @@ def generate_report(arch, cfg, params):
         for k, v in params.items():
             f.write(f"{k}: {v}\n")
 
-        f.write("\nArchitecture Explanation\n")
-        f.write("------------------------\n")
-
-        if arch == "replicated":
-            f.write(
-                "Replication was selected because multiple read ports "
-                "are required. Each memory replica supports a read port "
-                "while writes are broadcast to all replicas.\n"
-            )
-
-        elif arch == "banked":
-            f.write(
-                "Banking was selected to improve bandwidth by distributing "
-                "addresses across multiple independent memory banks.\n"
-            )
-
-        elif arch == "pipelined":
-            f.write(
-                "Pipeline stages were inserted to support higher clock "
-                "frequency operation.\n"
-            )
-
-        elif arch == "interleaved":
-            f.write(
-                "Interleaving was selected to improve throughput for "
-                "sequential access patterns.\n"
-            )
-
-        elif arch == "monolithic":
-            f.write(
-                "A single memory block is sufficient for the requested "
-                "configuration.\n"
-            )
-
     print("Generated Report:", report_file)
 
 
 # -------------------------------------
-# Main generator
+# Main
 # -------------------------------------
 
 def main():
@@ -247,21 +362,33 @@ def main():
 
     arch = select_architecture(cfg)
 
-    print("Selected Architecture:", arch)
+    print("\nSelected Architecture:", arch)
 
     params = compute_parameters(cfg)
 
     params["ARCHITECTURE"] = arch
 
-    generate_rtl(arch, params)
+    generate_architecture_rtl(arch, params)
+
+    generate_shared_modules(arch, cfg, params)
 
     generate_testbench(arch, params)
 
     generate_report(arch, cfg, params)
 
-    print("\nResults stored in:")
+    print("\nGeneration Completed")
+
+    print("\nResults located at:")
+
     print(f"{RESULT_DIR}/{arch}/")
 
+    print("\nRun simulation using:")
+
+    print(f"""
+cd results/{arch}/tb
+iverilog -o sim ../rtl/*.v *.v
+vvp sim
+""")
 
 if __name__ == "__main__":
     main()

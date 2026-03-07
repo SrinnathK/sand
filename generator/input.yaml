@@ -1,9 +1,9 @@
-memory_size: 65536
-data_width: 32
+memory_size: 1024
+data_width: 8
 
-num_ports: 4
-read_ports: 3
-write_ports: 1
+num_ports: 6
+read_ports: 4
+write_ports: 2
 
 num_banks: 4
 
@@ -11,3 +11,5 @@ clock_frequency: 500
 
 priority: latency
 access_pattern: random
+
+N: 6

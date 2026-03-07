@@ -1,0 +1,195 @@
+m255
+K4
+z2
+!s11f vlog 2024.1 2024.02, Feb  1 2024
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dF:/Sandisk/sand/generator/results/banked/tb
+vaddress_map_block
+Z1 2../rtl/address_map_block.v|../rtl/arbiter_round_robin.v|../rtl/banked_memory_controller.v|../rtl/bank_selector.v|../rtl/memory_bank.v|../rtl/memory_top.v|../rtl/read_mux.v
+Z2 !s110 1772796139
+!i10b 1
+!s100 A=GkLf4f`0JKG=fRc:1TK3
+IKN8EnkXh`m0XSamg9bGNc0
+R0
+Z3 w1772796106
+8../rtl/address_map_block.v
+F../rtl/address_map_block.v
+!i122 0
+L0 1 15
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 OL;L;2024.1;79
+r1
+!s85 0
+31
+Z6 !s108 1772796139.000000
+Z7 !s107 ../rtl/read_mux.v|../rtl/memory_top.v|../rtl/memory_bank.v|../rtl/bank_selector.v|../rtl/banked_memory_controller.v|../rtl/arbiter_round_robin.v|../rtl/address_map_block.v|
+Z8 !s90 ../rtl/address_map_block.v|../rtl/arbiter_round_robin.v|../rtl/banked_memory_controller.v|../rtl/bank_selector.v|../rtl/memory_bank.v|../rtl/memory_top.v|../rtl/read_mux.v|
+!i113 0
+Z9 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z10 tCvgOpt 0
+varbiter_round_robin
+R1
+R2
+!i10b 1
+!s100 FmaIT605C25:D]ANa>1T=3
+I_C0@oGLE7QN2]L[7L^MQh2
+R0
+R3
+8../rtl/arbiter_round_robin.v
+F../rtl/arbiter_round_robin.v
+!i122 0
+L0 1 43
+R4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R10
+vbank_selector
+R1
+R2
+!i10b 1
+!s100 N@5lGMN^8lCe[M;bGYaNG1
+IK4jC9<FOA@if8RZ4_@B]U0
+R0
+R3
+8../rtl/bank_selector.v
+F../rtl/bank_selector.v
+!i122 0
+Z11 L0 1 25
+R4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R10
+vbanked_memory_controller
+R1
+R2
+!i10b 1
+!s100 2hhC:3EL4NhT]MZZLKgCJ0
+IB7gJ3SZKfa]:>5?[KO78o0
+R0
+R3
+8../rtl/banked_memory_controller.v
+F../rtl/banked_memory_controller.v
+!i122 0
+L0 1 19
+R4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R10
+vbanked_memory_tb
+2banked_memory_tb.v
+!s110 1772796147
+!i10b 1
+!s100 nkL0bN27bFAD[J_XcSz9g1
+IGS5@n^LmkoY:Ia:5^HHV]3
+R0
+R3
+8banked_memory_tb.v
+Fbanked_memory_tb.v
+!i122 1
+L0 3 86
+R4
+R5
+r1
+!s85 0
+31
+!s108 1772796147.000000
+!s107 banked_memory_tb.v|
+!s90 banked_memory_tb.v|
+!i113 0
+R9
+R10
+vmemory_bank
+R1
+R2
+!i10b 1
+!s100 ^QD7ii>5DMD2;_8Ve[O<V2
+I7AR7jdZ7`KADnG:;dVSi63
+R0
+R3
+8../rtl/memory_bank.v
+F../rtl/memory_bank.v
+!i122 0
+L0 1 26
+R4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R10
+vmemory_top
+R1
+R2
+!i10b 1
+!s100 F]l=@Zh_Ebkl4M]XP]j>22
+IC=D:@PmzzlZPVCC_dTd693
+R0
+R3
+8../rtl/memory_top.v
+F../rtl/memory_top.v
+!i122 0
+L0 1 70
+R4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R10
+vread_mux
+R1
+R2
+!i10b 1
+!s100 =eJO<W2gTi_U9e>ZCcUM?3
+I<aU`^I^AXE_G]bRTCV13J3
+R0
+R3
+8../rtl/read_mux.v
+F../rtl/read_mux.v
+!i122 0
+R11
+R4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R10
