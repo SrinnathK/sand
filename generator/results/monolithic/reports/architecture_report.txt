@@ -1,166 +1,119 @@
-INTELLIGENT MEMORY ARCHITECTURE GENERATION REPORT
-=================================================
+INTELLIGENT MEMORY ARCHITECTURE REPORT
+======================================
 
-1. SYSTEM INPUT SPECIFICATION
------------------------------
+1. INPUT CONFIGURATION
+----------------------
+memory_size: 1024
+data_width: 8
+num_ports: 1
+read_ports: 1
+write_ports: 0
+num_banks: 1
+clock_frequency: 100
+priority: latency
+access_pattern: random
+N: 1
 
-Total Memory Size : 1024 bits (1.00 KB)
-Data Width        : 8 bits
-Total Ports       : 1
-Read Ports        : 1
-Write Ports       : 0
-Clock Frequency   : 100 MHz
-Access Pattern    : random
-Priority Goal     : latency
-Maximum Banks     : 1
+2. DERIVED PARAMETERS
+---------------------
+DATA_WIDTH: 8
+MEMORY_SIZE: 1024
+MEMORY_DEPTH: 128
+ADDR_WIDTH: 7
+NUM_PORTS: 1
+NUM_READ_PORTS: 1
+NUM_WRITE_PORTS: 0
+READ_PORTS: 1
+WRITE_PORTS: 0
+N: 1
+NUM_BANKS: 1
+MAX_BANKS: 1
+BANK_INDEX_WIDTH: 0
+BANK_ADDR_WIDTH: 7
+PIPELINE_DEPTH: 1
+CLOCK_FREQUENCY: 100
+ACCESS_PATTERN: 0
+PRIORITY: 0
+NUM_REPLICAS: 1
+ARBITER_TYPE: 0
+ADDR_MAP_TYPE: 0
+ARCHITECTURE: monolithic
 
-
-These parameters define the operational constraints and performance targets
-for the generated memory subsystem. The architecture generator analyzes these
-inputs to determine the most suitable memory organization capable of meeting
-performance, bandwidth, and complexity requirements.
-
-2. DERIVED MEMORY PARAMETERS
-----------------------------
-
-DATA_WIDTH          : 8
-MEMORY_SIZE         : 1024
-MEMORY_DEPTH        : 128
-ADDR_WIDTH          : 7
-NUM_PORTS           : 1
-NUM_READ_PORTS      : 1
-NUM_WRITE_PORTS     : 0
-READ_PORTS          : 1
-WRITE_PORTS         : 0
-N                   : 1
-NUM_BANKS           : 1
-MAX_BANKS           : 1
-BANK_INDEX_WIDTH    : 0
-BANK_ADDR_WIDTH     : 7
-PIPELINE_DEPTH      : 1
-CLOCK_FREQUENCY     : 100
-ACCESS_PATTERN      : 0
-PRIORITY            : 0
-NUM_REPLICAS        : 1
-ARBITER_TYPE        : 0
-ADDR_MAP_TYPE       : 0
-ARCHITECTURE        : monolithic
-
-
-Memory Depth Calculation
+3. SELECTED ARCHITECTURE
 ------------------------
-Memory depth represents the number of addressable memory words.
+Selected Architecture : monolithic
 
-Formula:
-    MEMORY_DEPTH = MEMORY_SIZE / DATA_WIDTH
-
-Computation:
-    MEMORY_DEPTH = 1024 / 8 = 128 words
-
-
-Address Width Calculation
--------------------------
-The address width determines the number of bits required to uniquely
-address every word in memory.
-
-Formula:
-    ADDR_WIDTH = ceil(log2(MEMORY_DEPTH))
-
-Computed Address Width:
-    ADDR_WIDTH = 7 bits
-
-3. ARCHITECTURE SELECTION
--------------------------
-
-Selected Architecture : MONOLITHIC
-
-Selection Reason
-----------------
+Reason for Selection
+--------------------
 Low port count and low frequency allow simple monolithic memory.
 
+4. ARCHITECTURE RANKING
+-----------------------
+1. monolithic (score: 10)
+2. replicated (score: 8)
+3. multiport (score: 3)
+4. banked (score: 2)
+5. pipelined (score: 1.0)
+6. interleaved (score: 0)
 
-The architecture selection algorithm evaluates system constraints including
-port count, access patterns, performance priorities, and operating frequency.
-Based on these conditions, it chooses the architecture that best balances
-performance, complexity, and scalability.
-
-4. MEMORY ACCESS CHARACTERISTICS
---------------------------------
-
-Total Parallel Ports : 1
-Estimated Peak Bandwidth : 8 bits per cycle
-
-
-Bandwidth Analysis
-------------------
-Peak memory bandwidth is estimated as:
-
-    BANDWIDTH = DATA_WIDTH × NUM_PORTS
-
-This represents the theoretical maximum number of bits that can be
-transferred per clock cycle assuming no bank conflicts or arbitration delays.
-
-5. ALTERNATIVE ARCHITECTURES CONSIDERED
----------------------------------------
-
-- banked
-- interleaved
-- replicated
-- multiport
-- pipelined
+5. SECOND BEST ARCHITECTURE
+---------------------------
+replicated
 
 
-The generator evaluates several alternative architectures. While these
-architectures may satisfy certain system requirements, they were not selected
-because they provide inferior tradeoffs under the given constraints.
+Although the second-best architecture could satisfy the design constraints,
+the selected architecture provides a better balance between performance,
+parallelism, and implementation complexity under the given input conditions.
 
-6. ARCHITECTURE TRADEOFF ANALYSIS
----------------------------------
-
-
-Monolithic Memory Architecture
-------------------------------
-A single unified memory array.
-
-Advantages
-- Minimal area
-- Simple control logic
-- Low power consumption
-
-Disadvantages
-- Limited scalability
-- Low parallelism
-
-7. IMPLEMENTATION DETAILS
+6. PERFORMANCE ESTIMATION
 -------------------------
+Estimated Peak Bandwidth : 8 bits/cycle
+Operating Frequency      : 100 MHz
 
+7. ARCHITECTURE DISCUSSION
+--------------------------
 
-The RTL generated for this architecture includes:
+Different memory architectures provide different tradeoffs.
 
-- Parameterized memory bank modules
-- Address mapping logic
-- Arbitration modules
-- Pipeline stages (if required)
-- Testbench for functional verification
+Monolithic Memory
+- Lowest hardware complexity
+- Limited parallel access
 
-All modules are generated from parameterized templates using Jinja2.
-This allows flexible scaling of memory size, port count, and banking
-configuration without modifying the RTL source code manually.
+Banked Memory
+- Improves bandwidth through multiple banks
+- Possible bank conflicts
+
+Interleaved Memory
+- Distributes sequential accesses across banks
+- Good for streaming workloads
+
+Replicated Memory
+- Eliminates read conflicts
+- Higher area due to duplicated memory arrays
+
+Multi-Port Memory
+- Supports simultaneous accesses
+- Complex memory cell design
+
+Pipelined Memory
+- Supports high clock frequencies
+- Increased latency due to pipeline stages
 
 8. SUMMARY
 ----------
 
+Based on the provided configuration parameters, the generator evaluated
+multiple candidate architectures.
 
-Based on the provided system constraints, the generator selected the
-MONOLITHIC architecture as the most appropriate implementation.
+Using a scoring-based architecture exploration model, the system ranked
+possible architectures and selected:
 
-The decision was primarily influenced by:
+    monolithic
 
-- Port configuration
-- Access pattern
-- Target clock frequency
-- Performance priority
+The second-best candidate was:
 
-The generated RTL implements the derived memory depth, address width,
-bank configuration, and pipeline structure necessary to satisfy these
-requirements.
+    replicated
+
+The final architecture was chosen because it provides the best balance
+between bandwidth, latency, and implementation complexity for the given
+system constraints.
