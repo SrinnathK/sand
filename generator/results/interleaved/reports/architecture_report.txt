@@ -1,165 +1,119 @@
-INTELLIGENT MEMORY ARCHITECTURE GENERATION REPORT
-=================================================
+INTELLIGENT MEMORY ARCHITECTURE REPORT
+======================================
 
-1. SYSTEM INPUT SPECIFICATION
------------------------------
+1. INPUT CONFIGURATION
+----------------------
+memory_size: 1024
+data_width: 8
+num_ports: 2
+read_ports: 1
+write_ports: 1
+num_banks: 4
+clock_frequency: 400
+priority: bandwidth
+access_pattern: sequential
+N: 2
 
-Total Memory Size : 1024 bits (1.00 KB)
-Data Width        : 8 bits
-Total Ports       : 2
-Read Ports        : 1
-Write Ports       : 1
-Clock Frequency   : 400 MHz
-Access Pattern    : sequential
-Priority Goal     : bandwidth
-Maximum Banks     : 4
+2. DERIVED PARAMETERS
+---------------------
+DATA_WIDTH: 8
+MEMORY_SIZE: 1024
+MEMORY_DEPTH: 128
+ADDR_WIDTH: 7
+NUM_PORTS: 2
+NUM_READ_PORTS: 1
+NUM_WRITE_PORTS: 1
+READ_PORTS: 1
+WRITE_PORTS: 1
+N: 2
+NUM_BANKS: 4
+MAX_BANKS: 4
+BANK_INDEX_WIDTH: 2
+BANK_ADDR_WIDTH: 5
+PIPELINE_DEPTH: 1
+CLOCK_FREQUENCY: 400
+ACCESS_PATTERN: 1
+PRIORITY: 1
+NUM_REPLICAS: 1
+ARBITER_TYPE: 0
+ADDR_MAP_TYPE: 0
+ARCHITECTURE: interleaved
 
-
-These parameters define the operational constraints and performance targets
-for the generated memory subsystem. The architecture generator analyzes these
-inputs to determine the most suitable memory organization capable of meeting
-performance, bandwidth, and complexity requirements.
-
-2. DERIVED MEMORY PARAMETERS
-----------------------------
-
-DATA_WIDTH          : 8
-MEMORY_SIZE         : 1024
-MEMORY_DEPTH        : 128
-ADDR_WIDTH          : 7
-NUM_PORTS           : 2
-NUM_READ_PORTS      : 1
-NUM_WRITE_PORTS     : 1
-READ_PORTS          : 1
-WRITE_PORTS         : 1
-N                   : 2
-NUM_BANKS           : 4
-MAX_BANKS           : 4
-BANK_INDEX_WIDTH    : 2
-BANK_ADDR_WIDTH     : 5
-PIPELINE_DEPTH      : 1
-CLOCK_FREQUENCY     : 400
-ACCESS_PATTERN      : 1
-PRIORITY            : 1
-NUM_REPLICAS        : 1
-ARBITER_TYPE        : 0
-ADDR_MAP_TYPE       : 0
-ARCHITECTURE        : interleaved
-
-
-Memory Depth Calculation
+3. SELECTED ARCHITECTURE
 ------------------------
-Memory depth represents the number of addressable memory words.
+Selected Architecture : interleaved
 
-Formula:
-    MEMORY_DEPTH = MEMORY_SIZE / DATA_WIDTH
-
-Computation:
-    MEMORY_DEPTH = 1024 / 8 = 128 words
-
-
-Address Width Calculation
--------------------------
-The address width determines the number of bits required to uniquely
-address every word in memory.
-
-Formula:
-    ADDR_WIDTH = ceil(log2(MEMORY_DEPTH))
-
-Computed Address Width:
-    ADDR_WIDTH = 7 bits
-
-3. ARCHITECTURE SELECTION
--------------------------
-
-Selected Architecture : INTERLEAVED
-
-Selection Reason
-----------------
+Reason for Selection
+--------------------
 Sequential access benefits from bank interleaving.
 
+4. ARCHITECTURE RANKING
+-----------------------
+1. interleaved (score: 17)
+2. banked (score: 13)
+3. multiport (score: 6)
+4. pipelined (score: 4.0)
+5. replicated (score: 3)
+6. monolithic (score: 0)
 
-The architecture selection algorithm evaluates system constraints including
-port count, access patterns, performance priorities, and operating frequency.
-Based on these conditions, it chooses the architecture that best balances
-performance, complexity, and scalability.
-
-4. MEMORY ACCESS CHARACTERISTICS
---------------------------------
-
-Total Parallel Ports : 2
-Estimated Peak Bandwidth : 16 bits per cycle
-
-
-Bandwidth Analysis
-------------------
-Peak memory bandwidth is estimated as:
-
-    BANDWIDTH = DATA_WIDTH × NUM_PORTS
-
-This represents the theoretical maximum number of bits that can be
-transferred per clock cycle assuming no bank conflicts or arbitration delays.
-
-5. ALTERNATIVE ARCHITECTURES CONSIDERED
----------------------------------------
-
-- monolithic
-- banked
-- replicated
-- multiport
-- pipelined
+5. SECOND BEST ARCHITECTURE
+---------------------------
+banked
 
 
-The generator evaluates several alternative architectures. While these
-architectures may satisfy certain system requirements, they were not selected
-because they provide inferior tradeoffs under the given constraints.
+Although the second-best architecture could satisfy the design constraints,
+the selected architecture provides a better balance between performance,
+parallelism, and implementation complexity under the given input conditions.
 
-6. ARCHITECTURE TRADEOFF ANALYSIS
----------------------------------
-
-
-Interleaved Memory Architecture
--------------------------------
-Sequential memory addresses are distributed across different banks.
-
-Advantages
-- Excellent performance for streaming workloads
-- Improved parallelism
-- Reduced bank conflicts for sequential access
-
-Disadvantages
-- Random accesses may still cause conflicts
-
-7. IMPLEMENTATION DETAILS
+6. PERFORMANCE ESTIMATION
 -------------------------
+Estimated Peak Bandwidth : 16 bits/cycle
+Operating Frequency      : 400 MHz
 
+7. ARCHITECTURE DISCUSSION
+--------------------------
 
-The RTL generated for this architecture includes:
+Different memory architectures provide different tradeoffs.
 
-- Parameterized memory bank modules
-- Address mapping logic
-- Arbitration modules
-- Pipeline stages (if required)
-- Testbench for functional verification
+Monolithic Memory
+- Lowest hardware complexity
+- Limited parallel access
 
-All modules are generated from parameterized templates using Jinja2.
-This allows flexible scaling of memory size, port count, and banking
-configuration without modifying the RTL source code manually.
+Banked Memory
+- Improves bandwidth through multiple banks
+- Possible bank conflicts
+
+Interleaved Memory
+- Distributes sequential accesses across banks
+- Good for streaming workloads
+
+Replicated Memory
+- Eliminates read conflicts
+- Higher area due to duplicated memory arrays
+
+Multi-Port Memory
+- Supports simultaneous accesses
+- Complex memory cell design
+
+Pipelined Memory
+- Supports high clock frequencies
+- Increased latency due to pipeline stages
 
 8. SUMMARY
 ----------
 
+Based on the provided configuration parameters, the generator evaluated
+multiple candidate architectures.
 
-Based on the provided system constraints, the generator selected the
-INTERLEAVED architecture as the most appropriate implementation.
+Using a scoring-based architecture exploration model, the system ranked
+possible architectures and selected:
 
-The decision was primarily influenced by:
+    interleaved
 
-- Port configuration
-- Access pattern
-- Target clock frequency
-- Performance priority
+The second-best candidate was:
 
-The generated RTL implements the derived memory depth, address width,
-bank configuration, and pipeline structure necessary to satisfy these
-requirements.
+    banked
+
+The final architecture was chosen because it provides the best balance
+between bandwidth, latency, and implementation complexity for the given
+system constraints.

@@ -1,17 +1,10 @@
-memory_size: 1024
+N: 1
+access_pattern: random
+clock_frequency: 500
 data_width: 8
-
+memory_size: 1024
+num_banks: 4
 num_ports: 2
+priority: latency
 read_ports: 1
 write_ports: 1
-
-num_banks: 2
-
-clock_frequency: 1000
-
-priority: bandwidth
-access_pattern: random
-
-pipeline_depth: 2
-
-N: 2

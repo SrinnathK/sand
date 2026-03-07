@@ -4,12 +4,12 @@
 Architecture  : monolithic
 DATA_WIDTH    : 8
 ADDR_WIDTH    : 7
-READ_PORTS    : 2
-WRITE_PORTS   : 2
+READ_PORTS    : 1
+WRITE_PORTS   : 0
 
-Total Writes        : 52
-Total Reads         : 106
-Total Operations    : 158
-Average Latency(ns) : 0.283019
-Throughput(ops/cyc) : 2.981132
+Total Writes        : 0
+Total Reads         : 53
+Total Operations    : 53
+Average Latency(ns) : 0.754717
+Throughput(ops/cyc) : 1.000000
 ====================================

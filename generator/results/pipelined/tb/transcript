@@ -1,6 +1,6 @@
 # vsim -c pipelined_memory_tb -do "run -all; quit" 
-# Start time: 05:43:59 on Mar 07,2026
-# ** Note: (vsim-3812) Design is being optimized...
+# Start time: 10:01:58 on Mar 07,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # Support of the MGLS_LICENSE_FILE and LM_LICENSE_FILE licensing environment variables will be discontinued starting with the 2025.1 release. Please update to using the SALT_LICENSE_SERVER variable.
 # Please contact Siemens EDA Customer Support (https://support.sw.siemens.com/) for assistance.
 # ** Warning: ../rtl/pipelined_memory_top.v(111): (vopt-2685) [TFMPC] - Too few port connections for 'mem_stage'.  Expected 9, found 8.
@@ -28,11 +28,10 @@
 # // of the Customer's facilities without the express written permission of SISW,
 # // and may not be used in any way not expressly authorized by SISW.
 # //
-# Loading work.pipelined_memory_tb(fast)
 # Loading sv_std.std
-# Loading work.pipelined_memory_top(fast)
+# Loading work.pipelined_memory_tb(fast)
 # run -all
 # ** Note: $finish    : pipelined_memory_tb.v(191)
 #    Time: 580 ns  Iteration: 0  Instance: /pipelined_memory_tb
-# End time: 05:44:00 on Mar 07,2026, Elapsed time: 0:00:01
+# End time: 10:01:59 on Mar 07,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 10

@@ -1,8 +1,10 @@
 m255
 K4
 z2
-!s12c _opt
-Z0 !s99 nomlopt
+Z0 !s12c _opt
+Z1 !s99 nomlopt
+R0
+R1
 !s11f vlog 2024.1 2024.02, Feb  1 2024
 13
 !s112 1.1
@@ -10,265 +12,267 @@ Z0 !s99 nomlopt
 !i10e 25
 !i10f 100
 cModel Technology
-Z1 dF:/Sandisk/sand/generator/results/replicated/tb
+Z2 dF:/Sandisk/sand/generator/results/replicated/tb
 T_opt
-!s110 1772842729
-VaRY^ni1bh7hXVoQRSR0NS3
+!s110 1772858228
+VcG`fcP9hEB];7;`OW>GPj0
 04 20 4 work replicated_memory_tb fast 0
-=1-fc3497019aed-69ab6ee9-12d-242c
-R0
+=1-fc3497019aed-69abab74-34-5c2c
+R1
 !s12f OEM100
 !s12b OEM100
 !s124 OEM100
 o-quiet -auto_acc_if_foreign -work work
-Z2 tCvgOpt 0
+Z3 tCvgOpt 0
 n@_opt
 OL;O;2024.1;79
 vaddress_map_block
-Z3 2../rtl/address_map_block.v|../rtl/arbiter_round_robin.v|../rtl/bank_selector.v|../rtl/memory_bank.v|../rtl/read_mux.v|../rtl/replicated_forwarding_unit.v|../rtl/replicated_memory_read_port.v|../rtl/replicated_memory_top.v|../rtl/write_broadcast.v
-Z4 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z5 !s110 1772842706
+Z4 2../rtl/address_map_block.v|../rtl/arbiter_round_robin.v|../rtl/bank_selector.v|../rtl/memory_bank.v|../rtl/read_mux.v|../rtl/replicated_forwarding_unit.v|../rtl/replicated_memory_read_port.v|../rtl/replicated_memory_top.v|../rtl/write_broadcast.v|replicated_memory_tb.v
+Z5 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z6 !s110 1772858200
 !i10b 1
 !s100 S^zdi?DK0M09UZVcD1oZe3
 I[ACSIdTei44FaCMo:z:A[1
 S1
-R1
-Z6 w1772842628
+R2
+Z7 w1772858167
 8../rtl/address_map_block.v
 F../rtl/address_map_block.v
-!i122 2
+!i122 4
 L0 1 15
-Z7 VDg1SIo80bB@j0V0VzS_@n1
-Z8 OL;L;2024.1;79
+Z8 VDg1SIo80bB@j0V0VzS_@n1
+Z9 OL;L;2024.1;79
 r1
 !s85 0
 31
-Z9 !s108 1772842706.000000
-Z10 !s107 ../rtl/write_broadcast.v|../rtl/replicated_memory_top.v|../rtl/replicated_memory_read_port.v|../rtl/replicated_forwarding_unit.v|../rtl/read_mux.v|../rtl/memory_bank.v|../rtl/bank_selector.v|../rtl/arbiter_round_robin.v|../rtl/address_map_block.v|
-Z11 !s90 -sv|../rtl/address_map_block.v|../rtl/arbiter_round_robin.v|../rtl/bank_selector.v|../rtl/memory_bank.v|../rtl/read_mux.v|../rtl/replicated_forwarding_unit.v|../rtl/replicated_memory_read_port.v|../rtl/replicated_memory_top.v|../rtl/write_broadcast.v|
+Z10 !s108 1772858200.000000
+Z11 !s107 replicated_memory_tb.v|../rtl/write_broadcast.v|../rtl/replicated_memory_top.v|../rtl/replicated_memory_read_port.v|../rtl/replicated_forwarding_unit.v|../rtl/read_mux.v|../rtl/memory_bank.v|../rtl/bank_selector.v|../rtl/arbiter_round_robin.v|../rtl/address_map_block.v|
+Z12 !s90 -sv|../rtl/address_map_block.v|../rtl/arbiter_round_robin.v|../rtl/bank_selector.v|../rtl/memory_bank.v|../rtl/read_mux.v|../rtl/replicated_forwarding_unit.v|../rtl/replicated_memory_read_port.v|../rtl/replicated_memory_top.v|../rtl/write_broadcast.v|replicated_memory_tb.v|
 !i113 0
-Z12 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R2
-varbiter_round_robin
+Z13 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R3
+varbiter_round_robin
 R4
 R5
+R6
 !i10b 1
 !s100 a`mNa9N=d]:_;;VlDOj9M2
 I_:[<o0>O`_:1S3B7CY:Lj1
 S1
-R1
-R6
+R2
+R7
 8../rtl/arbiter_round_robin.v
 F../rtl/arbiter_round_robin.v
-!i122 2
+!i122 4
 L0 1 43
-R7
 R8
+R9
 r1
 !s85 0
 31
-R9
 R10
 R11
-!i113 0
 R12
-R2
-vbank_selector
+!i113 0
+R13
 R3
+vbank_selector
 R4
 R5
+R6
 !i10b 1
 !s100 =KB`DTZR0KaO[1RI>hlXh3
 Iod@D@<mk;6Mkfb5V=BN;U0
 S1
-R1
-R6
+R2
+R7
 8../rtl/bank_selector.v
 F../rtl/bank_selector.v
-!i122 2
-Z13 L0 1 25
-R7
+!i122 4
+Z14 L0 1 25
 R8
+R9
 r1
 !s85 0
 31
-R9
 R10
 R11
-!i113 0
 R12
-R2
-vmemory_bank
+!i113 0
+R13
 R3
+vmemory_bank
 R4
 R5
+R6
 !i10b 1
 !s100 <6RbL5c`PU^[l=SZR>68O1
 IPBbAC03O8T6Q:iTEBChS82
 S1
-R1
-R6
+R2
+R7
 8../rtl/memory_bank.v
 F../rtl/memory_bank.v
-!i122 2
+!i122 4
 L0 1 26
-R7
 R8
+R9
 r1
 !s85 0
 31
-R9
 R10
 R11
-!i113 0
 R12
-R2
-vread_mux
+!i113 0
+R13
 R3
+vread_mux
 R4
 R5
+R6
 !i10b 1
 !s100 Q8>a^L?=9]Q=zzYZdFM]T1
 IzgjCcb2ZD8`];l0RJmVnA1
 S1
-R1
-R6
+R2
+R7
 8../rtl/read_mux.v
 F../rtl/read_mux.v
-!i122 2
+!i122 4
 L0 1 23
-R7
 R8
+R9
 r1
 !s85 0
 31
-R9
 R10
 R11
-!i113 0
 R12
-R2
-vreplicated_forwarding_unit
+!i113 0
+R13
 R3
+vreplicated_forwarding_unit
 R4
 R5
+R6
 !i10b 1
 !s100 oWK_0NSUMR:6lPe_ec7H]0
 IWefc4Kf6kZLnZPUk4KC:g0
 S1
-R1
-R6
+R2
+R7
 8../rtl/replicated_forwarding_unit.v
 F../rtl/replicated_forwarding_unit.v
-!i122 2
-R13
-R7
+!i122 4
+R14
 R8
+R9
 r1
 !s85 0
 31
-R9
 R10
 R11
-!i113 0
 R12
-R2
-vreplicated_memory_read_port
+!i113 0
+R13
 R3
+vreplicated_memory_read_port
 R4
 R5
+R6
 !i10b 1
 !s100 4Ak@edkfkBG<C9ao4>mGn3
 IPWofMK69aIOD>k;HM?R]J3
 S1
-R1
-R6
+R2
+R7
 8../rtl/replicated_memory_read_port.v
 F../rtl/replicated_memory_read_port.v
-!i122 2
+!i122 4
 L0 1 19
-R7
 R8
+R9
 r1
 !s85 0
 31
-R9
 R10
 R11
-!i113 0
 R12
-R2
+!i113 0
+R13
+R3
 vreplicated_memory_tb
-2replicated_memory_tb.v
-!s110 1772842711
-!i10b 1
-!s100 i2_Lh@4V3@oB10g8UR:o40
-IYN^zR:7eiLXCWP3k2@d]k2
-R1
+R4
+R5
 R6
+!i10b 1
+!s100 MnjYDBYMDl]F>D[Ikkj?[3
+I=9@O:?HlCDjRGhRiI<NTA2
+S1
+R2
+R7
 8replicated_memory_tb.v
 Freplicated_memory_tb.v
-!i122 3
+!i122 4
 L0 3 194
-R7
 R8
+R9
 r1
 !s85 0
 31
-!s108 1772842711.000000
-!s107 replicated_memory_tb.v|
-!s90 replicated_memory_tb.v|
+R10
+R11
+R12
 !i113 0
-o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R2
-vreplicated_memory_top
+R13
 R3
+vreplicated_memory_top
 R4
 R5
+R6
 !i10b 1
 !s100 z17>@Pl<V:CFG8aSmm6;k1
 IOB9LcKaXQaoL<[0B2>4n:2
 S1
-R1
-R6
+R2
+R7
 8../rtl/replicated_memory_top.v
 F../rtl/replicated_memory_top.v
-!i122 2
+!i122 4
 L0 1 86
-R7
 R8
+R9
 r1
 !s85 0
 31
-R9
 R10
 R11
-!i113 0
 R12
-R2
-vwrite_broadcast
+!i113 0
+R13
 R3
+vwrite_broadcast
 R4
 R5
+R6
 !i10b 1
 !s100 4QWVQj_zZQo:JTbafV=kN1
 IU1>E@<YI?7FeH`5[ShzME1
 S1
-R1
-R6
+R2
+R7
 8../rtl/write_broadcast.v
 F../rtl/write_broadcast.v
-!i122 2
+!i122 4
 L0 1 31
-R7
 R8
+R9
 r1
 !s85 0
 31
-R9
 R10
 R11
-!i113 0
 R12
-R2
+!i113 0
+R13
+R3

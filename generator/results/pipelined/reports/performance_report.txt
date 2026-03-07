@@ -7,9 +7,9 @@ ADDR_WIDTH    : 7
 READ_PORTS    : 1
 WRITE_PORTS   : 1
 
-Total Writes        : 25
+Total Writes        : 30
 Total Reads         : 53
-Total Operations    : 78
+Total Operations    : 83
 Average Latency(ns) : 0.566038
-Throughput(ops/cyc) : 1.471698
+Throughput(ops/cyc) : 1.566038
 ====================================

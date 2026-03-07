@@ -1,5 +1,5 @@
 $date
-	Sat Mar  7 05:54:41 2026
+	Sat Mar  7 10:11:14 2026
 $end
 $version
 	QuestaSim Version 2024.1
@@ -9,9 +9,6 @@ $timescale
 $end
 
 $scope module interleaved_memory_tb $end
-
-$scope module dut $end
-$upscope $end
 $upscope $end
 $enddefinitions $end
 #0
